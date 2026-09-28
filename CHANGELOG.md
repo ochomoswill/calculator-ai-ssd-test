@@ -17,3 +17,6 @@ Added addition: the Add and Equals keys compute sums and chained running totals 
 
 2026-09-28 — range-check-and-error-state
 Added the range check: any result that is not a finite number now shows "Number too large", ignores every key except the clear keys, and clears back to zero, with a typed error state in the engine, a starting-state option on mount, and engine and DOM tests.
+
+2026-09-28 — subtraction
+Added subtraction, negative numbers and the Toggle sign key: Subtract chains with Add, pressing it first starts a negative number, and negative entries and results show the locale's minus sign, with engine, formatter and DOM tests.

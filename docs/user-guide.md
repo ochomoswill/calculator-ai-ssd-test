@@ -12,6 +12,7 @@ This is a simple calculator for adding, subtracting, multiplying and dividing nu
 4. [Keypad and display](#keypad-and-display)
 5. [Addition](#addition)
 6. [Range check and error state](#range-check-and-error-state)
+7. [Subtraction](#subtraction)
 
 ---
 
@@ -90,7 +91,7 @@ Numbers appear like this:
 
 ### Related features
 
-[Calculation engine core](#calculation-engine-core), above, supplies the typed number this feature formats. [Keypad and display](#keypad-and-display) puts these formats on screen. [Addition](#addition) produces the first results they apply to; subtraction, multiplication and division (roadmap rows 7, 8 and 9) will follow.
+[Calculation engine core](#calculation-engine-core), above, supplies the typed number this feature formats. [Keypad and display](#keypad-and-display) puts these formats on screen. [Addition](#addition) and [Subtraction](#subtraction) produce results they apply to, including negative numbers with your locale's minus sign; multiplication and division (roadmap rows 8 and 9) will follow.
 
 ---
 
@@ -115,7 +116,7 @@ No setup is needed. Open the calculator as before; see the project README if you
 
 ### Related features
 
-[Calculator interface](#calculator-interface) provides the keys and display this feature connects. [Calculation engine core](#calculation-engine-core) supplies the number-entry rules you see, and [Number formatting](#number-formatting) decides how the number looks. [Addition](#addition) makes the Add and Equals keys work. Coming soon: subtraction, multiplication and division (roadmap rows 7, 8 and 9) will make the remaining keys work, and Physical keyboard input (row 10) will let you type without focusing a key first.
+[Calculator interface](#calculator-interface) provides the keys and display this feature connects. [Calculation engine core](#calculation-engine-core) supplies the number-entry rules you see, and [Number formatting](#number-formatting) decides how the number looks. [Addition](#addition) makes the Add and Equals keys work and [Subtraction](#subtraction) the Subtract and Toggle sign keys. Coming soon: multiplication and division (roadmap rows 8 and 9) will make the remaining keys work, and Physical keyboard input (row 10) will let you type without focusing a key first.
 
 ---
 
@@ -123,7 +124,7 @@ No setup is needed. Open the calculator as before; see the project README if you
 
 ### What this feature does
 
-You can now add numbers. Enter a number, press Add, enter another and press Equals to see the total. You can keep pressing Add to build up a running total, and the result of one sum can be the start of the next. Totals are shown rounded to twelve significant figures, so adding 0.1 and 0.2 shows 0.3. Subtract, Multiply, Divide and Toggle sign are still inactive.
+You can now add numbers. Enter a number, press Add, enter another and press Equals to see the total. You can keep pressing Add to build up a running total, and the result of one sum can be the start of the next. Totals are shown rounded to twelve significant figures, so adding 0.1 and 0.2 shows 0.3. When this feature first shipped the other operation keys were inactive; Subtract and Toggle sign came with [Subtraction](#subtraction).
 
 ### Setup
 
@@ -141,7 +142,7 @@ No setup is needed.
 
 ### Related features
 
-[Keypad and display](#keypad-and-display) provides the keys and display this feature uses, and [Number formatting](#number-formatting) decides how totals look. [Range check and error state](#range-check-and-error-state) handles totals too large to show. Coming soon: Subtraction (roadmap row 7), Multiplication (row 8) and Division (row 9) will complete the operations.
+[Keypad and display](#keypad-and-display) provides the keys and display this feature uses, and [Number formatting](#number-formatting) decides how totals look. [Range check and error state](#range-check-and-error-state) handles totals too large to show. [Subtraction](#subtraction) works the same way and can be mixed with addition in one chain. Coming soon: Multiplication (roadmap row 8) and Division (row 9) will complete the operations.
 
 ---
 
@@ -164,4 +165,28 @@ No setup is needed.
 ### Related features
 
 [Addition](#addition) is the first operation checked this way. Coming soon: Division (roadmap row 9) will add a second message for dividing by zero, and Responsive layout and theming (row 11) will give the error message a distinct look.
+
+---
+
+## Subtraction
+
+### What this feature does
+
+You can now subtract, work with negative numbers and flip the sign of a value. Subtract works like Add and the two can be mixed in one chain, for example 10 plus 5 minus 20. Pressing Subtract before you have typed anything starts a negative number. Toggle sign switches whatever is showing between positive and negative. Negative values are shown with the minus sign your language uses. Multiply and Divide are still inactive.
+
+### Setup
+
+No setup is needed.
+
+### How to use
+
+1. Enter a number, press Subtract, enter another and press Equals. For example 12, Subtract, 30, Equals shows -18.
+2. Mix operations by pressing Add or Subtract between numbers; the running total appears after each press.
+3. To start with a negative number, press Subtract first and then type the digits, for example Subtract, 5 shows -5.
+4. To make the number you are typing negative, or to flip a result, press Toggle sign. Press it again to flip back.
+5. After pressing Add or Subtract, press Toggle sign before typing to make the next number negative.
+
+### Related features
+
+[Addition](#addition) introduced chaining and Equals, which subtraction shares. [Number formatting](#number-formatting) supplies the minus sign for your locale. Coming soon: Multiplication (roadmap row 8) and Division (row 9).
 

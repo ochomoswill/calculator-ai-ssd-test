@@ -6,7 +6,7 @@
 /** Significant digits shown for a finished value; below the ~15-17 digit precision of IEEE 754 doubles. */
 export const MAX_SIGNIFICANT_DIGITS = 12;
 
-const ENTRY_PATTERN = /^\d+(\.\d*)?$/;
+const ENTRY_PATTERN = /^-?\d+(\.\d*)?$/;
 
 const valueFormatters = new Map();
 const integerFormatters = new Map();
@@ -66,18 +66,20 @@ export function formatValue(value, locale) {
 }
 
 /**
- * Format an in-progress entry string ("12.", "0.10") for display, grouping the
+ * Format an in-progress entry string ("12.", "0.10", "-3") for display, grouping the
  * integer part and using the locale decimal mark while preserving exactly what
  * was typed after the point.
- * @param {string} entry digits with an optional single decimal point
+ * @param {string} entry optional leading minus, digits, optional single decimal point
  * @param {string} [locale] defaults to the runtime locale
  */
 export function formatEntry(entry, locale) {
   if (typeof entry !== "string" || !ENTRY_PATTERN.test(entry)) {
     throw new RangeError(`formatEntry expects digits with an optional decimal point, got ${JSON.stringify(entry)}`);
   }
-  const [integerPart, fractionPart] = entry.split(".");
-  const grouped = integerFormatter(locale).format(Number(integerPart));
+  const negative = entry.startsWith("-");
+  const [integerPart, fractionPart] = (negative ? entry.slice(1) : entry).split(".");
+  const tokens = localeTokens(locale);
+  const grouped = (negative ? tokens.minusSign : "") + integerFormatter(locale).format(Number(integerPart));
   if (fractionPart === undefined) return grouped;
-  return grouped + localeTokens(locale).decimal + fractionPart;
+  return grouped + tokens.decimal + fractionPart;
 }

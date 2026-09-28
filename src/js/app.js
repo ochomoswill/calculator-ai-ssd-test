@@ -2,7 +2,7 @@
 // the engine's entry through the formatter into the result display.
 // See specs/tech-design-web.md, Requirement 1 (presentation layer) and
 // Requirement 2 (entry formatting). Touches the DOM only through the root it is given.
-import { initialState, inputDigit, inputDecimal, clearEntry, clearAll, inputOperator, evaluate, ERRORS } from "./engine/engine.js";
+import { initialState, inputDigit, inputDecimal, clearEntry, clearAll, inputOperator, evaluate, toggleSign, ERRORS } from "./engine/engine.js";
 import { formatEntry, formatValue } from "./format.js";
 
 /** User-facing text for each engine error kind. */
@@ -18,6 +18,8 @@ const KEY_ACTIONS = Object.freeze({
   "clear-entry": clearEntry,
   "clear-all": clearAll,
   add: (state) => inputOperator(state, "add"),
+  subtract: (state) => inputOperator(state, "subtract"),
+  "toggle-sign": toggleSign,
   equals: evaluate,
 });
 

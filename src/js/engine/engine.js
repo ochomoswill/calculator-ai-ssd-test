@@ -16,11 +16,15 @@ export const ERRORS = Object.freeze({
 /** Operations by name. Later features add entries here. */
 const OPERATIONS = Object.freeze({
   add: (a, b) => a + b,
+  subtract: (a, b) => a - b,
 });
+
+/** Entry that shows a minus sign but no digits yet: the user pressed minus or toggled sign on zero. */
+const NEGATIVE_ZERO = "-0";
 
 /**
  * @typedef {object} EngineState
- * @property {string} entry    Characters typed so far, e.g. "12.5".
+ * @property {string} entry    Characters typed so far, e.g. "12.5" or "-3"; "-0" is a negative placeholder.
  * @property {string} display  Raw text for the interface: entry while typing, String(result) when a result is shown.
  * @property {string} operator Pending operation name ("add") or "".
  * @property {string} operand  Left operand as a full-precision number string, or "".
@@ -42,6 +46,7 @@ export function inputDigit(state, digit) {
   if (state.error) return state;
   const base = state.typing ? state : startEntry(state);
   if (base.entry === "0") return withEntry(base, digit);
+  if (base.entry === NEGATIVE_ZERO) return withEntry(base, "-" + digit);
   if (countDigits(base.entry) >= MAX_ENTRY_DIGITS) return base === state ? state : base;
   return withEntry(base, base.entry + digit);
 }
@@ -75,11 +80,27 @@ export function inputOperator(state, operation) {
     throw new RangeError(`inputOperator expects one of ${Object.keys(OPERATIONS).join(", ")}, got ${JSON.stringify(operation)}`);
   }
   if (state.error) return state;
+  if (operation === "subtract" && isUntouched(state)) return withEntry(state, NEGATIVE_ZERO);
   if (state.operator && !state.typing) {
     return state.operator === operation ? state : freeze({ ...state, operator: operation });
   }
   const value = state.operator ? compute(state) : currentValue(state);
   return showResult(state, value, { operator: operation, operand: String(value) });
+}
+
+/**
+ * Flip the sign of the entry while typing, of a finished result when nothing is
+ * pending, or start a negative entry when an operation is pending and nothing is typed.
+ */
+export function toggleSign(state) {
+  if (state.error) return state;
+  if (state.typing) {
+    const entry = state.entry.startsWith("-") ? state.entry.slice(1) : "-" + state.entry;
+    return withEntry(state, entry);
+  }
+  if (state.operator) return withEntry(startEntry(state), NEGATIVE_ZERO);
+  const value = state.result === 0 ? 0 : -state.result;
+  return showResult(state, value, {});
 }
 
 /** Compute the pending operation and show its result. */
@@ -116,7 +137,12 @@ function withEntry(state, entry) {
   return freeze({ ...state, entry, display: entry });
 }
 
-function countDigits(entry) {
+function isUntouched(state) {
+  return !state.operator && state.result === null && state.typing && state.entry === "0";
+}
+
+function countDigits(rawEntry) {
+  const entry = rawEntry.startsWith("-") ? rawEntry.slice(1) : rawEntry;
   const significant = entry.startsWith("0.") ? entry.slice(2) : entry;
   return significant.replace(".", "").length;
 }
