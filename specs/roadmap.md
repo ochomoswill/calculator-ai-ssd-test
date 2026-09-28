@@ -84,8 +84,8 @@ Ordered queue of features. Each builds only on the ones above it. Design decisio
 
 ### 14. Offline support
 - **Delivers:** The installed calculator works with no network connection.
-- **Status:** planned
-- **Build:** Service worker precaching the static files with a versioned cache-first strategy, per [Requirement 1](tech-design-web.md#requirement-1-a-calculator-application-for-web-and-mobile).
+- **Status:** done
+- **Build:** Service worker precaching the static files with a versioned cache-first strategy, per [Requirement 1](tech-design-web.md#requirement-1-a-calculator-application-for-web-and-mobile). Spec: [2026-09-28-offline-support](2026-09-28-offline-support/requirements.md).
 - **Done when:** After one online visit the app loads and calculates with the network disabled, and a new deploy replaces the old cache.
 
 ### 15. Engine package for mobile
