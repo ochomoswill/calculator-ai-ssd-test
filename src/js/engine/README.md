@@ -26,7 +26,7 @@ State fields:
 
 Actions: `initialState()`, `inputDigit(state, digit)`, `inputDecimal(state)`,
 `clearEntry(state)`, `clearAll()`, `inputOperator(state, name)`, `evaluate(state)`,
-`toggleSign(state)`. Pressing `subtract` before anything has been entered negates
+`toggleSign(state)`, `deleteLast(state)`. Pressing `subtract` before anything has been entered negates
 instead of recording an operation: the entry becomes the placeholder `-0`, which
 the next digit turns into a negative number.
 Operations live in one table keyed by name (`add`, `subtract`, `multiply`, `divide`); results are kept at

@@ -26,3 +26,6 @@ Added multiplication: the Multiply key joins the left-to-right operation chain, 
 
 2026-09-28 — division
 Added division, completing the four operations: the Divide key joins the chain, non-terminating quotients are shown rounded to twelve significant digits, and dividing by zero shows "Cannot divide by zero" until cleared, with engine and DOM tests.
+
+2026-09-28 — physical-keyboard-input
+Added physical keyboard input: digits, point or comma, + - * x /, Enter or =, Escape, Backspace and Delete drive the calculator from the main row or numeric keypad, with modifier shortcuts left to the browser, a new delete-last engine action, and DOM tests.

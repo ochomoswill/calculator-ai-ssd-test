@@ -2,7 +2,7 @@
 // the engine's entry through the formatter into the result display.
 // See specs/tech-design-web.md, Requirement 1 (presentation layer) and
 // Requirement 2 (entry formatting). Touches the DOM only through the root it is given.
-import { initialState, inputDigit, inputDecimal, clearEntry, clearAll, inputOperator, evaluate, toggleSign, ERRORS } from "./engine/engine.js";
+import { initialState, inputDigit, inputDecimal, clearEntry, clearAll, inputOperator, evaluate, toggleSign, deleteLast, ERRORS } from "./engine/engine.js";
 import { formatEntry, formatValue } from "./format.js";
 
 /** User-facing text for each engine error kind. */
@@ -24,6 +24,24 @@ const KEY_ACTIONS = Object.freeze({
   divide: (state) => inputOperator(state, "divide"),
   "toggle-sign": toggleSign,
   equals: evaluate,
+  "delete-last": deleteLast,
+});
+
+/** Physical keyboard keys (KeyboardEvent.key) to key identifiers. Digits map to themselves. */
+const KEYBOARD_KEYS = Object.freeze({
+  ".": "decimal",
+  ",": "decimal",
+  "+": "add",
+  "-": "subtract",
+  "*": "multiply",
+  x: "multiply",
+  X: "multiply",
+  "/": "divide",
+  Enter: "equals",
+  "=": "equals",
+  Escape: "clear-all",
+  Delete: "clear-entry",
+  Backspace: "delete-last",
 });
 
 /**
@@ -50,18 +68,33 @@ export function mount(root, { locale, state: startingState } = {}) {
       state.result !== null ? formatValue(state.result, locale) : formatEntry(state.entry, locale);
   };
 
-  keypad.addEventListener("click", (event) => {
-    const button = event.target.closest("button[data-key]");
-    if (!button || !keypad.contains(button)) return;
-    const key = button.dataset.key;
+  /** Apply the action for a key identifier and re-render. Returns false for unknown identifiers. */
+  const press = (key) => {
     if (DIGIT_KEYS.has(key)) {
       state = inputDigit(state, key);
     } else if (key in KEY_ACTIONS) {
       state = KEY_ACTIONS[key](state);
     } else {
-      return; // unknown key identifier
+      return false;
     }
     render();
+    return true;
+  };
+
+  keypad.addEventListener("click", (event) => {
+    const button = event.target.closest("button[data-key]");
+    if (!button || !keypad.contains(button)) return;
+    press(button.dataset.key);
+  });
+
+  root.ownerDocument.addEventListener("keydown", (event) => {
+    if (event.ctrlKey || event.metaKey || event.altKey) return;
+    const onKeypadButton = event.target instanceof root.ownerDocument.defaultView.HTMLButtonElement && keypad.contains(event.target);
+    if (onKeypadButton && (event.key === "Enter" || event.key === " ")) return; // native activation handles it
+    const key = DIGIT_KEYS.has(event.key) ? event.key : KEYBOARD_KEYS[event.key];
+    if (key === undefined) return;
+    event.preventDefault();
+    press(key);
   });
 
   render();

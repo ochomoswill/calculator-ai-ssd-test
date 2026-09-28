@@ -60,8 +60,8 @@ Ordered queue of features. Each builds only on the ones above it. Design decisio
 
 ### 10. Physical keyboard input
 - **Delivers:** The user can operate the whole calculator from a keyboard, including the numeric keypad.
-- **Status:** planned
-- **Build:** Keydown handling on the standard key property mapped to engine actions, per [Requirement 1](tech-design-web.md#requirement-1-a-calculator-application-for-web-and-mobile).
+- **Status:** done
+- **Build:** Keydown handling on the standard key property mapped to engine actions, per [Requirement 1](tech-design-web.md#requirement-1-a-calculator-application-for-web-and-mobile). Spec: [2026-09-28-physical-keyboard-input](2026-09-28-physical-keyboard-input/requirements.md).
 - **Done when:** DOM tests confirm digits, four operators, Enter, Escape, Backspace and Delete all act as designed.
 
 ### 11. Responsive layout and theming

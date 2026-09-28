@@ -13,11 +13,11 @@ describe("Feature 4: keypad and display", () => {
     assert.equal(shown(display), "0");
   });
 
-  test("A2: single click listener, no keyboard listener", async () => {
+  test("A2: one click listener and one keydown listener (feature 10)", async () => {
     const source = await readFile(new URL("../src/js/app.js", import.meta.url), "utf8");
     const listeners = source.match(/addEventListener\(\s*"([a-z]+)"/g) ?? [];
-    assert.deepEqual(listeners, ['addEventListener("click"']);
-    assert.doesNotMatch(source, /key(down|up|press)/);
+    assert.deepEqual(listeners, ['addEventListener("click"', 'addEventListener("keydown"']);
+    assert.doesNotMatch(source, /key(up|press)/);
   });
 
   test("A3: imports limited to engine and formatter", async () => {

@@ -71,5 +71,10 @@ export async function mountPage(locale, state) {
   const type = (chars) => {
     for (const c of chars) click(c === "." ? "Decimal point" : c);
   };
-  return { document, display, click, type };
+  const key = (value, init = {}, target = document) => {
+    const event = new document.defaultView.KeyboardEvent("keydown", { key: value, bubbles: true, cancelable: true, ...init });
+    target.dispatchEvent(event);
+    return event.defaultPrevented;
+  };
+  return { document, display, click, type, key };
 }

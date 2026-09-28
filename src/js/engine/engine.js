@@ -68,6 +68,13 @@ export function clearEntry(state) {
   return freeze({ ...state, entry: "0", display: "0", typing: true, result: null });
 }
 
+/** Remove the last typed character while typing; an emptied entry becomes zero. */
+export function deleteLast(state) {
+  if (state.error || !state.typing) return state;
+  const shorter = state.entry.slice(0, -1);
+  return withEntry(state, shorter === "" || shorter === "-" ? "0" : shorter);
+}
+
 /** Return to the initial state. */
 export function clearAll() {
   return initialState();
