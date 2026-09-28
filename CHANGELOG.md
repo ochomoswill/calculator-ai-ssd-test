@@ -14,3 +14,6 @@ Connected the keypad to the calculator: digit, decimal point, clear entry and cl
 
 2026-09-28 — addition
 Added addition: the Add and Equals keys compute sums and chained running totals shown at twelve significant digits with full precision kept internally, built on a new pending-operation state machine in the engine, with engine and DOM tests.
+
+2026-09-28 — range-check-and-error-state
+Added the range check: any result that is not a finite number now shows "Number too large", ignores every key except the clear keys, and clears back to zero, with a typed error state in the engine, a starting-state option on mount, and engine and DOM tests.

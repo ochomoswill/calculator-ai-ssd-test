@@ -58,10 +58,10 @@ export function byRole(scope, role, name) {
  * Returns the document, the "Result" display element, and a click helper that
  * activates a key by its accessible name.
  */
-export async function mountPage(locale) {
+export async function mountPage(locale, state) {
   const document = await loadPage();
   const { mount } = await import("../../src/js/app.js");
-  mount(document.querySelector("main"), { locale });
+  mount(document.querySelector("main"), { locale, state });
   const [display] = byRole(document, "status", "Result");
   const click = (name) => {
     const [button] = byRole(document, "button", name);
