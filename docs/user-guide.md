@@ -18,6 +18,7 @@ This is a simple calculator for adding, subtracting, multiplying and dividing nu
 10. [Physical keyboard input](#physical-keyboard-input)
 11. [Responsive layout and theming](#responsive-layout-and-theming)
 12. [Persistence](#persistence)
+13. [Installable PWA](#installable-pwa)
 
 ---
 
@@ -42,7 +43,7 @@ No setup is needed. Open the calculator's web address in any modern browser. If 
 
 ### Related features
 
-[Keypad and display](#keypad-and-display) makes these keys work for entering numbers. [Physical keyboard input](#physical-keyboard-input) lets you type instead of pressing keys. [Persistence](#persistence) saves your last result and recent calculations. A later section will cover installing the calculator as an app.
+[Keypad and display](#keypad-and-display) makes these keys work for entering numbers. [Physical keyboard input](#physical-keyboard-input) lets you type instead of pressing keys. [Persistence](#persistence) saves your last result and recent calculations. [Installable PWA](#installable-pwa) covers installing the calculator as an app.
 
 ---
 
@@ -285,7 +286,7 @@ No setup is needed. The calculator reads your device's appearance and motion set
 
 ### Related features
 
-[Calculator interface](#calculator-interface) laid out the keys this feature styles. [Range check and error state](#range-check-and-error-state) and [Division](#division) produce the messages shown in the warning colour. [Persistence](#persistence) adds the history list below the keypad. Coming soon: Installable PWA (roadmap row 13).
+[Calculator interface](#calculator-interface) laid out the keys this feature styles. [Range check and error state](#range-check-and-error-state) and [Division](#division) produce the messages shown in the warning colour. [Persistence](#persistence) adds the history list below the keypad. [Installable PWA](#installable-pwa) uses the same accent colour for the app icon and window.
 
 ---
 
@@ -308,5 +309,29 @@ No setup is needed. To let the calculator remember between visits, allow the sit
 
 ### Related features
 
-[Keypad and display](#keypad-and-display) and every operation section describe what gets remembered. [Number formatting](#number-formatting) formats the numbers in the history list for your locale. Coming soon: Installable PWA (roadmap row 13) and Offline support (row 14).
+[Keypad and display](#keypad-and-display) and every operation section describe what gets remembered. [Number formatting](#number-formatting) formats the numbers in the history list for your locale. [Installable PWA](#installable-pwa) lets you keep the calculator as an app. Coming soon: Offline support (roadmap row 14).
+
+---
+
+## Installable PWA
+
+### What this feature does
+
+You can now install the calculator on your phone, tablet or computer like an ordinary app. Once installed it has its own icon, opens in its own window without browser toolbars, and remembers your history as before. Nothing is downloaded from an app store; the installation comes straight from the web page. It does not yet work without an internet connection; that arrives with the next feature.
+
+### Setup
+
+Open the calculator over a secure (https) address in a browser that supports installing web apps, such as Chrome, Edge or Samsung Internet. On iPhone and iPad, use Safari's Share menu and choose Add to Home Screen.
+
+### How to use
+
+1. Open the calculator in your browser.
+2. Look for an Install option: an icon in the address bar, an entry in the browser menu, or a banner on a phone. On iPhone and iPad, choose Add to Home Screen from the Share menu.
+3. Confirm. The calculator's icon appears with your other apps.
+4. Open it from that icon. It launches in its own window.
+5. To remove it, uninstall it as you would any app, or remove it from your home screen.
+
+### Related features
+
+[Responsive layout and theming](#responsive-layout-and-theming) gives the app its colours, which the icon and window frame share. [Persistence](#persistence) keeps your history inside the installed app. Coming soon: Offline support (roadmap row 14).
 
