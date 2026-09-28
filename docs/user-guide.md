@@ -8,6 +8,7 @@ This is a simple calculator for adding, subtracting, multiplying and dividing nu
 
 1. [Calculator interface](#calculator-interface)
 2. [Calculation engine core](#calculation-engine-core)
+3. [Number formatting](#number-formatting)
 
 ---
 
@@ -60,5 +61,31 @@ There is nothing new to do yet. When a later feature connects the keys, typing a
 
 ### Related features
 
-Coming soon. Number formatting with your local separators (roadmap row 3) will change how the typed number is shown, and connecting the keypad (row 4) will make the steps above happen on screen. Calculator interface, above, is the screen these rules will drive.
+[Number formatting](#number-formatting), below, decides how the typed number is shown. Connecting the keypad (roadmap row 4) is still to come and will make the steps above happen on screen. [Calculator interface](#calculator-interface), above, is the screen these rules will drive.
+
+---
+
+## Number formatting
+
+### What this feature does
+
+This feature decides how numbers look on the calculator's display. Numbers follow the conventions of your language and region: the thousands are grouped with the separator you are used to, the decimal mark is a point or a comma as appropriate, and negative numbers use the correct minus sign for your locale. Results are shown to twelve significant figures, so a sum such as 0.1 plus 0.2 reads as 0.3 rather than a long tail of digits. While you are typing, what you have typed is kept exactly, including a decimal point with nothing after it yet. Nothing changes on screen in this release: the display still shows 0, because the connection between the keys, the number logic and the display arrives in the next feature.
+
+### Setup
+
+No setup is needed. The calculator reads the language and region already set in your browser or device. To see a different format, change that setting; there is no separate option inside the calculator.
+
+### How to use
+
+There is nothing new to do yet. Once the display is connected, numbers will appear like this:
+
+1. Type a large number and the thousands are grouped automatically, for example 1,234,567 in an English locale or 1.234.567 in a German one.
+2. Type a decimal point and it appears as the mark your locale uses, a point or a comma, and stays visible while you continue typing.
+3. Type trailing zeros after the point, such as 0.10, and they stay exactly as typed until you finish the number.
+4. Get a result with many decimal places, such as one third, and it is shown rounded to twelve significant figures.
+5. Get a negative result and it carries your locale's minus sign in front.
+
+### Related features
+
+[Calculation engine core](#calculation-engine-core), above, supplies the typed number this feature formats. Coming soon: connecting the keypad and display (roadmap row 4) will put these formats on screen, and each arithmetic operation (rows 5, 7, 8 and 9) will produce the results they apply to.
 
