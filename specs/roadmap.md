@@ -12,8 +12,8 @@ Ordered queue of features. Each builds only on the ones above it. Design decisio
 
 ### 2. Calculation engine core
 - **Delivers:** Nothing visible yet; the pure logic that will hold what the user types.
-- **Status:** planned
-- **Build:** DOM-free JavaScript ES module with the entry state machine and typed result/error interface, per [Requirement 1](tech-design-web.md#requirement-1-a-calculator-application-for-web-and-mobile).
+- **Status:** done
+- **Build:** DOM-free JavaScript ES module with the entry state machine and typed result/error interface, per [Requirement 1](tech-design-web.md#requirement-1-a-calculator-application-for-web-and-mobile). Spec: [2026-09-28-calculation-engine-core](2026-09-28-calculation-engine-core/requirements.md).
 - **Done when:** Unit tests cover digit entry, decimal point, clear and clear-entry with no browser API imported.
 
 ### 3. Number formatting
