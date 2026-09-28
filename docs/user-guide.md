@@ -15,6 +15,7 @@ This is a simple calculator for adding, subtracting, multiplying and dividing nu
 7. [Subtraction](#subtraction)
 8. [Multiplication](#multiplication)
 9. [Division](#division)
+10. [Physical keyboard input](#physical-keyboard-input)
 
 ---
 
@@ -39,7 +40,7 @@ No setup is needed. Open the calculator's web address in any modern browser. If 
 
 ### Related features
 
-[Keypad and display](#keypad-and-display) makes these keys work for entering numbers. Later sections will cover each arithmetic operation, keyboard shortcuts, saving your last result and installing the calculator as an app.
+[Keypad and display](#keypad-and-display) makes these keys work for entering numbers. [Physical keyboard input](#physical-keyboard-input) lets you type instead of pressing keys. Later sections will cover saving your last result and installing the calculator as an app.
 
 ---
 
@@ -118,7 +119,7 @@ No setup is needed. Open the calculator as before; see the project README if you
 
 ### Related features
 
-[Calculator interface](#calculator-interface) provides the keys and display this feature connects. [Calculation engine core](#calculation-engine-core) supplies the number-entry rules you see, and [Number formatting](#number-formatting) decides how the number looks. [Addition](#addition) makes the Add and Equals keys work and [Subtraction](#subtraction) the Subtract and Toggle sign keys. [Multiplication](#multiplication) makes the Multiply key work and [Division](#division) the Divide key. Coming soon: and Physical keyboard input (row 10) will let you type without focusing a key first.
+[Calculator interface](#calculator-interface) provides the keys and display this feature connects. [Calculation engine core](#calculation-engine-core) supplies the number-entry rules you see, and [Number formatting](#number-formatting) decides how the number looks. [Addition](#addition) makes the Add and Equals keys work and [Subtraction](#subtraction) the Subtract and Toggle sign keys. [Multiplication](#multiplication) makes the Multiply key work and [Division](#division) the Divide key. Coming soon: and [Physical keyboard input](#physical-keyboard-input) lets you type without focusing a key first.
 
 ---
 
@@ -234,5 +235,30 @@ No setup is needed.
 
 ### Related features
 
-[Addition](#addition), [Subtraction](#subtraction) and [Multiplication](#multiplication) share the chaining rules. [Range check and error state](#range-check-and-error-state) describes how error messages behave. Coming soon: Physical keyboard input (roadmap row 10) will let you type calculations directly.
+[Addition](#addition), [Subtraction](#subtraction) and [Multiplication](#multiplication) share the chaining rules. [Range check and error state](#range-check-and-error-state) describes how error messages behave. [Physical keyboard input](#physical-keyboard-input) lets you type calculations directly.
+
+---
+
+## Physical keyboard input
+
+### What this feature does
+
+You can now type a whole calculation on a physical keyboard without clicking any on-screen key. Digits, the decimal point, the four operators, Enter, Escape, Backspace and Delete all work, from the main row or the numeric keypad. Keys pressed together with Control, Command or Alt are left to the browser, so your usual shortcuts still work.
+
+### Setup
+
+No setup is needed. Click anywhere on the calculator page once so it has the keyboard's attention, then type.
+
+### How to use
+
+1. Type digits and a point or comma to enter a number, for example 1 2 . 5.
+2. Type + to add, - to subtract, * or x to multiply and / to divide.
+3. Press Enter or = to see the result.
+4. Press Backspace to remove the last character you typed.
+5. Press Delete to clear the current number while keeping the calculation in progress, or Escape to clear everything.
+6. To start a negative number, type - before the digits, exactly as with the Subtract key.
+
+### Related features
+
+[Keypad and display](#keypad-and-display) covers reaching the on-screen keys with Tab, Enter and Space. Every operation section above applies equally to typed input. Coming soon: Responsive layout and theming (roadmap row 11) and Persistence (row 12).
 
