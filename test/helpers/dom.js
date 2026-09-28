@@ -1,6 +1,6 @@
 // Loads src/index.html into jsdom and offers small role / accessible-name helpers.
-// Scripts are not executed: feature 1's entry module attaches no behaviour,
-// and jsdom does not run ES module scripts.
+// Scripts are not executed because jsdom does not run ES module scripts;
+// mountPage() imports the wiring module and mounts it directly instead.
 import { readFile } from "node:fs/promises";
 import { JSDOM } from "jsdom";
 
@@ -51,4 +51,25 @@ export function byRole(scope, role, name) {
   return Array.from(scope.querySelectorAll("*")).filter(
     (el) => roleOf(el) === role && (name === undefined || accessibleName(el) === name),
   );
+}
+
+/**
+ * Load the page and mount the calculator wiring on it with an explicit locale.
+ * Returns the document, the "Result" display element, and a click helper that
+ * activates a key by its accessible name.
+ */
+export async function mountPage(locale) {
+  const document = await loadPage();
+  const { mount } = await import("../../src/js/app.js");
+  mount(document.querySelector("main"), { locale });
+  const [display] = byRole(document, "status", "Result");
+  const click = (name) => {
+    const [button] = byRole(document, "button", name);
+    if (!button) throw new Error(`no key named ${name}`);
+    button.click();
+  };
+  const type = (chars) => {
+    for (const c of chars) click(c === "." ? "Decimal point" : c);
+  };
+  return { document, display, click, type };
 }

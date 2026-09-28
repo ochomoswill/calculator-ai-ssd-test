@@ -8,3 +8,6 @@ Added the pure, browser-free calculation engine that tracks the number being typ
 
 2026-09-28 — number-formatting
 Added the display formatter that shows numbers with the user's locale grouping, decimal mark and minus sign, rounds results to twelve significant digits so floating-point noise never appears, and keeps in-progress entries exactly as typed, still not connected to the screen, plus unit tests across three locales.
+
+2026-09-28 — keypad-and-display
+Connected the keypad to the calculator: digit, decimal point, clear entry and clear all keys now update the result display with the locale-formatted entry, operator keys stay inert, plus a mountable wiring module and DOM tests in two locales.
