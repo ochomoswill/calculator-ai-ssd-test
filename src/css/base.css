@@ -1,5 +1,30 @@
+/* Theme tokens: light values on :root, dark values under prefers-color-scheme.
+   Every colour in the app is referenced through these tokens. */
 :root {
   color-scheme: light dark;
+  --bg: #f4f5f7;
+  --fg: #1a1c20;
+  --surface: #ffffff;
+  --surface-fg: #1a1c20;
+  --accent: #1e5a8f;
+  --accent-fg: #ffffff;
+  --error: #b3261e;
+  --border: #c4c8cf;
+  --focus: #1e5a8f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16181c;
+    --fg: #e8eaee;
+    --surface: #24272d;
+    --surface-fg: #e8eaee;
+    --accent: #5aa0e0;
+    --accent-fg: #0f1a26;
+    --error: #ff8a80;
+    --border: #3a3f48;
+    --focus: #8cc4ff;
+  }
 }
 
 *,
@@ -11,7 +36,17 @@
 body {
   margin: 0;
   min-block-size: 100vh;
-  background: Canvas;
-  color: CanvasText;
+  background: var(--bg);
+  color: var(--fg);
   font-family: system-ui, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    transform: none !important;
+    animation: none !important;
+  }
 }

@@ -12,11 +12,20 @@
   text-align: end;
   font-size: 2.25rem;
   font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+  min-block-size: 3.5rem;
   padding-block: 0.75rem;
   padding-inline: 1rem;
-  border: 1px solid GrayText;
+  border: 1px solid var(--border);
   border-radius: 0.5rem;
+  background: var(--surface);
+  color: var(--surface-fg);
   overflow-wrap: anywhere;
+}
+
+.display[data-error] {
+  color: var(--error);
+  font-size: 1.25rem;
 }
 
 .keypad {
@@ -30,14 +39,55 @@
   font-size: 1.25rem;
   min-block-size: 3rem;
   padding-block: 0.75rem;
-  border: 1px solid GrayText;
+  padding-inline: 0.5rem;
+  border: 1px solid var(--border);
   border-radius: 0.5rem;
-  background: ButtonFace;
-  color: ButtonText;
+  background: var(--surface);
+  color: var(--surface-fg);
+  cursor: pointer;
+  transition: transform 80ms ease-out, background-color 80ms ease-out;
+}
+
+.key:active {
+  transform: scale(0.96);
+}
+
+.key:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.key-operator {
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-color: var(--accent);
 }
 
 .key-zero {
   grid-column: span 2;
+}
+
+/* Narrow containers: tighter keys and a smaller display. */
+@container (max-width: 18rem) {
+  .display {
+    font-size: 1.75rem;
+  }
+  .key {
+    font-size: 1.1rem;
+    min-block-size: 2.5rem;
+    padding-block: 0.5rem;
+  }
+}
+
+/* Wide containers: larger, easier targets. */
+@container (min-width: 22rem) {
+  .display {
+    font-size: 2.75rem;
+  }
+  .key {
+    font-size: 1.5rem;
+    min-block-size: 3.5rem;
+  }
 }
 
 .visually-hidden {

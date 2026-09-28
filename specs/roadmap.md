@@ -66,8 +66,8 @@ Ordered queue of features. Each builds only on the ones above it. Design decisio
 
 ### 11. Responsive layout and theming
 - **Delivers:** The calculator fits any screen or container, respects zoom, and follows the OS light/dark and reduced-motion settings.
-- **Status:** planned
-- **Build:** CSS Grid in a container-query context with logical properties, viewport meta and colour-scheme support, per [Requirement 1](tech-design-web.md#requirement-1-a-calculator-application-for-web-and-mobile).
+- **Status:** done
+- **Build:** CSS Grid in a container-query context with logical properties, viewport meta and colour-scheme support, per [Requirement 1](tech-design-web.md#requirement-1-a-calculator-application-for-web-and-mobile). Spec: [2026-09-28-responsive-layout-and-theming](2026-09-28-responsive-layout-and-theming/requirements.md).
 - **Done when:** Manual check on phone and desktop widths, both colour schemes and reduced motion shows no overflow, clipping or animation.
 
 ### 12. Persistence

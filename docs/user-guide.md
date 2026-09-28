@@ -16,6 +16,7 @@ This is a simple calculator for adding, subtracting, multiplying and dividing nu
 8. [Multiplication](#multiplication)
 9. [Division](#division)
 10. [Physical keyboard input](#physical-keyboard-input)
+11. [Responsive layout and theming](#responsive-layout-and-theming)
 
 ---
 
@@ -167,7 +168,7 @@ No setup is needed.
 
 ### Related features
 
-[Addition](#addition) is the first operation checked this way. [Division](#division) adds a second message for dividing by zero. Coming soon: Responsive layout and theming (roadmap row 11) will give the error messages a distinct look.
+[Addition](#addition) is the first operation checked this way. [Division](#division) adds a second message for dividing by zero. [Responsive layout and theming](#responsive-layout-and-theming) gives the error messages a distinct look.
 
 ---
 
@@ -260,5 +261,28 @@ No setup is needed. Click anywhere on the calculator page once so it has the key
 
 ### Related features
 
-[Keypad and display](#keypad-and-display) covers reaching the on-screen keys with Tab, Enter and Space. Every operation section above applies equally to typed input. Coming soon: Responsive layout and theming (roadmap row 11) and Persistence (row 12).
+[Keypad and display](#keypad-and-display) covers reaching the on-screen keys with Tab, Enter and Space. Every operation section above applies equally to typed input. [Responsive layout and theming](#responsive-layout-and-theming) shows where your keyboard focus is. Coming soon: Persistence (roadmap row 12).
+
+---
+
+## Responsive layout and theming
+
+### What this feature does
+
+The calculator now adapts to where it is shown. Keys and the display grow on wide screens and tighten on narrow ones, the page never scrolls sideways on a phone, and you can zoom as much as you like. Colours follow your device's light or dark setting automatically. Operation keys are tinted so they stand out from the digits, error messages appear in a warning colour that fits the display, and when you move through the keys with Tab a clear ring shows which one is selected. Keys give a brief press animation, which is switched off if your device asks for reduced motion.
+
+### Setup
+
+No setup is needed. The calculator reads your device's appearance and motion settings; change those settings to change the calculator.
+
+### How to use
+
+1. Open the calculator on a phone or resize the browser window; the layout adjusts by itself.
+2. Switch your device between light and dark appearance; the calculator follows without a reload.
+3. Press Tab to move between keys and watch for the highlighted ring around the selected key.
+4. If you prefer less animation, turn on your device's reduce-motion setting; key presses then show no movement.
+
+### Related features
+
+[Calculator interface](#calculator-interface) laid out the keys this feature styles. [Range check and error state](#range-check-and-error-state) and [Division](#division) produce the messages shown in the warning colour. Coming soon: Persistence (roadmap row 12) and Installable PWA (row 13).
 
