@@ -13,6 +13,7 @@ This is a simple calculator for adding, subtracting, multiplying and dividing nu
 5. [Addition](#addition)
 6. [Range check and error state](#range-check-and-error-state)
 7. [Subtraction](#subtraction)
+8. [Multiplication](#multiplication)
 
 ---
 
@@ -91,7 +92,7 @@ Numbers appear like this:
 
 ### Related features
 
-[Calculation engine core](#calculation-engine-core), above, supplies the typed number this feature formats. [Keypad and display](#keypad-and-display) puts these formats on screen. [Addition](#addition) and [Subtraction](#subtraction) produce results they apply to, including negative numbers with your locale's minus sign; multiplication and division (roadmap rows 8 and 9) will follow.
+[Calculation engine core](#calculation-engine-core), above, supplies the typed number this feature formats. [Keypad and display](#keypad-and-display) puts these formats on screen. [Addition](#addition) and [Subtraction](#subtraction) produce results they apply to, including negative numbers with your locale's minus sign, and [Multiplication](#multiplication) rounds long products the same way; division (roadmap row 9) will follow.
 
 ---
 
@@ -116,7 +117,7 @@ No setup is needed. Open the calculator as before; see the project README if you
 
 ### Related features
 
-[Calculator interface](#calculator-interface) provides the keys and display this feature connects. [Calculation engine core](#calculation-engine-core) supplies the number-entry rules you see, and [Number formatting](#number-formatting) decides how the number looks. [Addition](#addition) makes the Add and Equals keys work and [Subtraction](#subtraction) the Subtract and Toggle sign keys. Coming soon: multiplication and division (roadmap rows 8 and 9) will make the remaining keys work, and Physical keyboard input (row 10) will let you type without focusing a key first.
+[Calculator interface](#calculator-interface) provides the keys and display this feature connects. [Calculation engine core](#calculation-engine-core) supplies the number-entry rules you see, and [Number formatting](#number-formatting) decides how the number looks. [Addition](#addition) makes the Add and Equals keys work and [Subtraction](#subtraction) the Subtract and Toggle sign keys. [Multiplication](#multiplication) makes the Multiply key work. Coming soon: division (roadmap row 9) will make the last key work, and Physical keyboard input (row 10) will let you type without focusing a key first.
 
 ---
 
@@ -142,7 +143,7 @@ No setup is needed.
 
 ### Related features
 
-[Keypad and display](#keypad-and-display) provides the keys and display this feature uses, and [Number formatting](#number-formatting) decides how totals look. [Range check and error state](#range-check-and-error-state) handles totals too large to show. [Subtraction](#subtraction) works the same way and can be mixed with addition in one chain. Coming soon: Multiplication (roadmap row 8) and Division (row 9) will complete the operations.
+[Keypad and display](#keypad-and-display) provides the keys and display this feature uses, and [Number formatting](#number-formatting) decides how totals look. [Range check and error state](#range-check-and-error-state) handles totals too large to show. [Subtraction](#subtraction) works the same way and can be mixed with addition in one chain. [Multiplication](#multiplication) is where very large totals become likely. Coming soon: Division (roadmap row 9) will complete the operations.
 
 ---
 
@@ -172,7 +173,7 @@ No setup is needed.
 
 ### What this feature does
 
-You can now subtract, work with negative numbers and flip the sign of a value. Subtract works like Add and the two can be mixed in one chain, for example 10 plus 5 minus 20. Pressing Subtract before you have typed anything starts a negative number. Toggle sign switches whatever is showing between positive and negative. Negative values are shown with the minus sign your language uses. Multiply and Divide are still inactive.
+You can now subtract, work with negative numbers and flip the sign of a value. Subtract works like Add and the two can be mixed in one chain, for example 10 plus 5 minus 20. Pressing Subtract before you have typed anything starts a negative number. Toggle sign switches whatever is showing between positive and negative. Negative values are shown with the minus sign your language uses. When this feature first shipped Multiply and Divide were inactive; Multiply came with [Multiplication](#multiplication).
 
 ### Setup
 
@@ -188,5 +189,27 @@ No setup is needed.
 
 ### Related features
 
-[Addition](#addition) introduced chaining and Equals, which subtraction shares. [Number formatting](#number-formatting) supplies the minus sign for your locale. Coming soon: Multiplication (roadmap row 8) and Division (row 9).
+[Addition](#addition) introduced chaining and Equals, which subtraction shares. [Number formatting](#number-formatting) supplies the minus sign for your locale. [Multiplication](#multiplication) joins the same chains. Coming soon: Division (roadmap row 9).
+
+---
+
+## Multiplication
+
+### What this feature does
+
+You can now multiply. The Multiply key works like Add and Subtract and joins the same chains. Operations in a chain are applied in the order you press them, left to right, as on a pocket calculator: 2 plus 3 times 4 gives 20, not 14. Products with many digits are shown rounded to twelve significant figures. Multiplying large numbers is the easiest way to exceed what the calculator can hold, in which case it shows "Number too large". Divide is still inactive.
+
+### Setup
+
+No setup is needed.
+
+### How to use
+
+1. Enter a number, press Multiply, enter another and press Equals. For example 12, Multiply, 3, Equals shows 36.
+2. Chain freely with Add and Subtract; each press applies the operation so far and shows the running value.
+3. If the display shows "Number too large", press Clear all and try smaller numbers.
+
+### Related features
+
+[Addition](#addition) and [Subtraction](#subtraction) share the chaining rules. [Range check and error state](#range-check-and-error-state) explains the "Number too large" message. Coming soon: Division (roadmap row 9).
 
