@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "serve": "node tools/serve.js",
-    "test": "node --test test/*.test.js"
+    "test": "node --test test/*.test.js",
+    "icons": "node tools/make-icons.js"
   },
   "devDependencies": {
     "jsdom": "^29.1.1"

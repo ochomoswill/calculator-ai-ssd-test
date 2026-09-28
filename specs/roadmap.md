@@ -78,8 +78,8 @@ Ordered queue of features. Each builds only on the ones above it. Design decisio
 
 ### 13. Installable PWA
 - **Delivers:** The user can install the calculator on a phone or desktop and open it as a standalone app.
-- **Status:** planned
-- **Build:** Web app manifest with name, icons, start URL and standalone display, served over HTTPS, per [Requirement 1](tech-design-web.md#requirement-1-a-calculator-application-for-web-and-mobile).
+- **Status:** done
+- **Build:** Web app manifest with name, icons, start URL and standalone display, served over HTTPS, per [Requirement 1](tech-design-web.md#requirement-1-a-calculator-application-for-web-and-mobile). Spec: [2026-09-28-installable-pwa](2026-09-28-installable-pwa/requirements.md).
 - **Done when:** A supporting browser offers installation and the installed app launches without browser chrome.
 
 ### 14. Offline support

@@ -35,3 +35,6 @@ Styled the calculator: colour tokens with automatic light and dark themes, conta
 
 2026-09-28 — persistence
 Added persistence: the display value, any calculation in progress and a ten-item History list survive a reload, stored in the browser behind MDN's storage feature check and validated on load, with a Clear history button, identical behaviour when storage is blocked or full, and storage and DOM tests.
+
+2026-09-28 — installable-pwa
+Made the calculator installable: a web app manifest with name, start URL, standalone display, theme colours and generated 192 and 512 pixel icons, linked from the page, with a zero-dependency icon generator and tests that verify the manifest, icons and page links.
