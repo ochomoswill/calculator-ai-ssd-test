@@ -11,6 +11,7 @@ const DIGITS = new Set(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]);
 /** Error kinds the engine can enter. The presentation layer maps them to messages. */
 export const ERRORS = Object.freeze({
   overflow: "overflow",
+  divideByZero: "divide-by-zero",
 });
 
 /** Operations by name. Later features add entries here. */
@@ -18,6 +19,7 @@ const OPERATIONS = Object.freeze({
   add: (a, b) => a + b,
   subtract: (a, b) => a - b,
   multiply: (a, b) => a * b,
+  divide: (a, b) => a / b,
 });
 
 /** Entry that shows a minus sign but no digits yet: the user pressed minus or toggled sign on zero. */
@@ -85,8 +87,13 @@ export function inputOperator(state, operation) {
   if (state.operator && !state.typing) {
     return state.operator === operation ? state : freeze({ ...state, operator: operation });
   }
-  const value = state.operator ? compute(state) : currentValue(state);
-  return showResult(state, value, { operator: operation, operand: String(value) });
+  if (!state.operator) {
+    const value = currentValue(state);
+    return showResult(state, value, { operator: operation, operand: String(value) });
+  }
+  const outcome = compute(state);
+  if (outcome.error) return errorState(outcome.error);
+  return showResult(state, outcome.value, { operator: operation, operand: String(outcome.value) });
 }
 
 /**
@@ -107,14 +114,17 @@ export function toggleSign(state) {
 /** Compute the pending operation and show its result. */
 export function evaluate(state) {
   if (state.error || !state.operator) return state;
-  const value = compute(state);
-  return showResult(state, value, { operator: "", operand: "" });
+  const outcome = compute(state);
+  if (outcome.error) return errorState(outcome.error);
+  return showResult(state, outcome.value, { operator: "", operand: "" });
 }
 
+/** Run the pending operation. Returns { value } or { error } without ever producing a non-finite value in state. */
 function compute(state) {
   const left = Number(state.operand);
   const right = state.typing ? Number(state.entry) : currentValue(state);
-  return OPERATIONS[state.operator](left, right);
+  if (state.operator === "divide" && right === 0) return { error: ERRORS.divideByZero };
+  return { value: OPERATIONS[state.operator](left, right) };
 }
 
 function currentValue(state) {

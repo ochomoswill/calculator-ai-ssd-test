@@ -8,6 +8,7 @@ import { formatEntry, formatValue } from "./format.js";
 /** User-facing text for each engine error kind. */
 const ERROR_MESSAGES = Object.freeze({
   [ERRORS.overflow]: "Number too large",
+  [ERRORS.divideByZero]: "Cannot divide by zero",
 });
 
 const DIGIT_KEYS = new Set(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]);
@@ -20,6 +21,7 @@ const KEY_ACTIONS = Object.freeze({
   add: (state) => inputOperator(state, "add"),
   subtract: (state) => inputOperator(state, "subtract"),
   multiply: (state) => inputOperator(state, "multiply"),
+  divide: (state) => inputOperator(state, "divide"),
   "toggle-sign": toggleSign,
   equals: evaluate,
 });
@@ -57,7 +59,7 @@ export function mount(root, { locale, state: startingState } = {}) {
     } else if (key in KEY_ACTIONS) {
       state = KEY_ACTIONS[key](state);
     } else {
-      return; // remaining operator and sign keys arrive in later features
+      return; // unknown key identifier
     }
     render();
   });

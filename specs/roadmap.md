@@ -54,8 +54,8 @@ Ordered queue of features. Each builds only on the ones above it. Design decisio
 
 ### 9. Division
 - **Delivers:** The user can divide two numbers and gets a clear message when dividing by zero.
-- **Status:** planned
-- **Build:** Pure engine function with a divisor check returning a typed divide-by-zero error, per [Requirement 5](tech-design-web.md#requirement-5-division).
+- **Status:** done
+- **Build:** Pure engine function with a divisor check returning a typed divide-by-zero error, per [Requirement 5](tech-design-web.md#requirement-5-division). Spec: [2026-09-28-division](2026-09-28-division/requirements.md).
 - **Done when:** Tests cover division, non-terminating results rounded for display, and divide-by-zero error and recovery.
 
 ### 10. Physical keyboard input

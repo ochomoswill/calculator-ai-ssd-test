@@ -90,13 +90,13 @@ describe("Feature 4: keypad and display", () => {
     assert.equal(shown(display), "0");
   });
 
-  test("A13: operator keys inert", async () => {
+  test("A13: operator keys (now live) never throw", async () => {
     const { display, type, click } = await mountPage(COMMA_GROUP);
     type("789");
-    for (const name of ["Divide"]) {
+    for (const name of ["Add", "Subtract", "Multiply", "Divide", "Equals", "Toggle sign"]) {
       assert.doesNotThrow(() => click(name), name);
-      assert.equal(shown(display), "789", `after ${name}`);
     }
+    assert.ok(shown(display).length > 0);
   });
 
   test("A14: display stays plain text", async () => {

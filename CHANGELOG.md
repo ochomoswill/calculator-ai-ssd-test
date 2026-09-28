@@ -23,3 +23,6 @@ Added subtraction, negative numbers and the Toggle sign key: Subtract chains wit
 
 2026-09-28 — multiplication
 Added multiplication: the Multiply key joins the left-to-right operation chain, products are rounded to twelve significant digits on screen, and overflow through Equals or a chained operator shows "Number too large", with engine and DOM tests.
+
+2026-09-28 — division
+Added division, completing the four operations: the Divide key joins the chain, non-terminating quotients are shown rounded to twelve significant digits, and dividing by zero shows "Cannot divide by zero" until cleared, with engine and DOM tests.

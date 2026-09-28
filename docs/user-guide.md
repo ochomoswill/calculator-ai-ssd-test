@@ -14,6 +14,7 @@ This is a simple calculator for adding, subtracting, multiplying and dividing nu
 6. [Range check and error state](#range-check-and-error-state)
 7. [Subtraction](#subtraction)
 8. [Multiplication](#multiplication)
+9. [Division](#division)
 
 ---
 
@@ -92,7 +93,7 @@ Numbers appear like this:
 
 ### Related features
 
-[Calculation engine core](#calculation-engine-core), above, supplies the typed number this feature formats. [Keypad and display](#keypad-and-display) puts these formats on screen. [Addition](#addition) and [Subtraction](#subtraction) produce results they apply to, including negative numbers with your locale's minus sign, and [Multiplication](#multiplication) rounds long products the same way; division (roadmap row 9) will follow.
+[Calculation engine core](#calculation-engine-core), above, supplies the typed number this feature formats. [Keypad and display](#keypad-and-display) puts these formats on screen. [Addition](#addition) and [Subtraction](#subtraction) produce results they apply to, including negative numbers with your locale's minus sign, and [Multiplication](#multiplication) and [Division](#division) round long results the same way.
 
 ---
 
@@ -117,7 +118,7 @@ No setup is needed. Open the calculator as before; see the project README if you
 
 ### Related features
 
-[Calculator interface](#calculator-interface) provides the keys and display this feature connects. [Calculation engine core](#calculation-engine-core) supplies the number-entry rules you see, and [Number formatting](#number-formatting) decides how the number looks. [Addition](#addition) makes the Add and Equals keys work and [Subtraction](#subtraction) the Subtract and Toggle sign keys. [Multiplication](#multiplication) makes the Multiply key work. Coming soon: division (roadmap row 9) will make the last key work, and Physical keyboard input (row 10) will let you type without focusing a key first.
+[Calculator interface](#calculator-interface) provides the keys and display this feature connects. [Calculation engine core](#calculation-engine-core) supplies the number-entry rules you see, and [Number formatting](#number-formatting) decides how the number looks. [Addition](#addition) makes the Add and Equals keys work and [Subtraction](#subtraction) the Subtract and Toggle sign keys. [Multiplication](#multiplication) makes the Multiply key work and [Division](#division) the Divide key. Coming soon: and Physical keyboard input (row 10) will let you type without focusing a key first.
 
 ---
 
@@ -143,7 +144,7 @@ No setup is needed.
 
 ### Related features
 
-[Keypad and display](#keypad-and-display) provides the keys and display this feature uses, and [Number formatting](#number-formatting) decides how totals look. [Range check and error state](#range-check-and-error-state) handles totals too large to show. [Subtraction](#subtraction) works the same way and can be mixed with addition in one chain. [Multiplication](#multiplication) is where very large totals become likely. Coming soon: Division (roadmap row 9) will complete the operations.
+[Keypad and display](#keypad-and-display) provides the keys and display this feature uses, and [Number formatting](#number-formatting) decides how totals look. [Range check and error state](#range-check-and-error-state) handles totals too large to show. [Subtraction](#subtraction) works the same way and can be mixed with addition in one chain. [Multiplication](#multiplication) is where very large totals become likely, and [Division](#division) adds a second message for dividing by zero.
 
 ---
 
@@ -165,7 +166,7 @@ No setup is needed.
 
 ### Related features
 
-[Addition](#addition) is the first operation checked this way. Coming soon: Division (roadmap row 9) will add a second message for dividing by zero, and Responsive layout and theming (row 11) will give the error message a distinct look.
+[Addition](#addition) is the first operation checked this way. [Division](#division) adds a second message for dividing by zero. Coming soon: Responsive layout and theming (roadmap row 11) will give the error messages a distinct look.
 
 ---
 
@@ -189,7 +190,7 @@ No setup is needed.
 
 ### Related features
 
-[Addition](#addition) introduced chaining and Equals, which subtraction shares. [Number formatting](#number-formatting) supplies the minus sign for your locale. [Multiplication](#multiplication) joins the same chains. Coming soon: Division (roadmap row 9).
+[Addition](#addition) introduced chaining and Equals, which subtraction shares. [Number formatting](#number-formatting) supplies the minus sign for your locale. [Multiplication](#multiplication) and [Division](#division) join the same chains.
 
 ---
 
@@ -197,7 +198,7 @@ No setup is needed.
 
 ### What this feature does
 
-You can now multiply. The Multiply key works like Add and Subtract and joins the same chains. Operations in a chain are applied in the order you press them, left to right, as on a pocket calculator: 2 plus 3 times 4 gives 20, not 14. Products with many digits are shown rounded to twelve significant figures. Multiplying large numbers is the easiest way to exceed what the calculator can hold, in which case it shows "Number too large". Divide is still inactive.
+You can now multiply. The Multiply key works like Add and Subtract and joins the same chains. Operations in a chain are applied in the order you press them, left to right, as on a pocket calculator: 2 plus 3 times 4 gives 20, not 14. Products with many digits are shown rounded to twelve significant figures. Multiplying large numbers is the easiest way to exceed what the calculator can hold, in which case it shows "Number too large". When this feature first shipped Divide was inactive; it came with [Division](#division).
 
 ### Setup
 
@@ -211,5 +212,27 @@ No setup is needed.
 
 ### Related features
 
-[Addition](#addition) and [Subtraction](#subtraction) share the chaining rules. [Range check and error state](#range-check-and-error-state) explains the "Number too large" message. Coming soon: Division (roadmap row 9).
+[Addition](#addition) and [Subtraction](#subtraction) share the chaining rules. [Range check and error state](#range-check-and-error-state) explains the "Number too large" message. [Division](#division) completes the four operations.
+
+---
+
+## Division
+
+### What this feature does
+
+You can now divide, which completes the four operations. The Divide key joins the same left-to-right chain as the others. Results that go on forever, such as one third, are shown rounded to twelve significant figures. Dividing by zero has no answer, so the calculator shows "Cannot divide by zero" and waits for you to clear, exactly as it does for numbers that are too large.
+
+### Setup
+
+No setup is needed.
+
+### How to use
+
+1. Enter a number, press Divide, enter another and press Equals. For example 12, Divide, 3, Equals shows 4.
+2. Divide 1 by 3 and the display shows 0.333333333333; the full value is still used if you continue the calculation.
+3. If you divide by zero, the display shows "Cannot divide by zero". Press Clear entry or Clear all to continue.
+
+### Related features
+
+[Addition](#addition), [Subtraction](#subtraction) and [Multiplication](#multiplication) share the chaining rules. [Range check and error state](#range-check-and-error-state) describes how error messages behave. Coming soon: Physical keyboard input (roadmap row 10) will let you type calculations directly.
 
