@@ -18,8 +18,8 @@ Ordered queue of features. Each builds only on the ones above it. Design decisio
 
 ### 3. Number formatting
 - **Delivers:** Numbers shown with the user's locale separators and no floating-point noise.
-- **Status:** planned
-- **Build:** Internationalisation number-formatting with a significant-digit cap and locale minus sign, applied in a presentation-side module so the engine's display value stays the raw entry text, per [Requirement 2](tech-design-web.md#requirement-2-addition) and [Requirement 3](tech-design-web.md#requirement-3-subtraction).
+- **Status:** done
+- **Build:** Internationalisation number-formatting with a significant-digit cap and locale minus sign, applied in a presentation-side module so the engine's display value stays the raw entry text, per [Requirement 2](tech-design-web.md#requirement-2-addition) and [Requirement 3](tech-design-web.md#requirement-3-subtraction). Spec: [2026-09-28-number-formatting](2026-09-28-number-formatting/requirements.md).
 - **Done when:** Unit tests confirm locale grouping, decimal mark, negative sign and the rounding of 0.1 + 0.2 to 0.3.
 
 ### 4. Keypad and display
