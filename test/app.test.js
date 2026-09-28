@@ -93,7 +93,7 @@ describe("Feature 4: keypad and display", () => {
   test("A13: operator keys inert", async () => {
     const { display, type, click } = await mountPage(COMMA_GROUP);
     type("789");
-    for (const name of ["Add", "Subtract", "Multiply", "Divide", "Equals", "Toggle sign"]) {
+    for (const name of ["Subtract", "Multiply", "Divide", "Toggle sign"]) {
       assert.doesNotThrow(() => click(name), name);
       assert.equal(shown(display), "789", `after ${name}`);
     }

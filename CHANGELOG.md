@@ -11,3 +11,6 @@ Added the display formatter that shows numbers with the user's locale grouping, 
 
 2026-09-28 — keypad-and-display
 Connected the keypad to the calculator: digit, decimal point, clear entry and clear all keys now update the result display with the locale-formatted entry, operator keys stay inert, plus a mountable wiring module and DOM tests in two locales.
+
+2026-09-28 — addition
+Added addition: the Add and Equals keys compute sums and chained running totals shown at twelve significant digits with full precision kept internally, built on a new pending-operation state machine in the engine, with engine and DOM tests.

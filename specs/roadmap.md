@@ -30,8 +30,8 @@ Ordered queue of features. Each builds only on the ones above it. Design decisio
 
 ### 5. Addition
 - **Delivers:** The user can add two numbers and chain further additions.
-- **Status:** planned
-- **Build:** Pure engine function wired to a plus key, per [Requirement 2](tech-design-web.md#requirement-2-addition).
+- **Status:** done
+- **Build:** Pure engine function wired to a plus key, per [Requirement 2](tech-design-web.md#requirement-2-addition). Spec: [2026-09-28-addition](2026-09-28-addition/requirements.md).
 - **Done when:** Engine and DOM tests pass for single and chained additions, including decimals.
 
 ### 6. Range check and error state

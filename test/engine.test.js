@@ -47,7 +47,7 @@ describe("Feature 2: calculation engine core", () => {
   });
 
   test("A4: initial state fields", () => {
-    assert.deepEqual(initialState(), { entry: "0", display: "0", operator: "", operand: "", error: "" });
+    assert.deepEqual(initialState(), { entry: "0", display: "0", operator: "", operand: "", error: "", typing: true, result: null });
   });
 
   test("A5: display mirrors entry", () => {

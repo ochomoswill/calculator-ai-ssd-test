@@ -2,8 +2,8 @@
 // the engine's entry through the formatter into the result display.
 // See specs/tech-design-web.md, Requirement 1 (presentation layer) and
 // Requirement 2 (entry formatting). Touches the DOM only through the root it is given.
-import { initialState, inputDigit, inputDecimal, clearEntry, clearAll } from "./engine/engine.js";
-import { formatEntry } from "./format.js";
+import { initialState, inputDigit, inputDecimal, clearEntry, clearAll, inputOperator, evaluate } from "./engine/engine.js";
+import { formatEntry, formatValue } from "./format.js";
 
 const DIGIT_KEYS = new Set(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]);
 
@@ -12,6 +12,8 @@ const KEY_ACTIONS = Object.freeze({
   decimal: inputDecimal,
   "clear-entry": clearEntry,
   "clear-all": clearAll,
+  add: (state) => inputOperator(state, "add"),
+  equals: evaluate,
 });
 
 /**
@@ -27,7 +29,8 @@ export function mount(root, { locale } = {}) {
   let state = initialState();
 
   const render = () => {
-    display.textContent = formatEntry(state.entry, locale);
+    display.textContent =
+      state.result !== null ? formatValue(state.result, locale) : formatEntry(state.entry, locale);
   };
 
   keypad.addEventListener("click", (event) => {
@@ -39,7 +42,7 @@ export function mount(root, { locale } = {}) {
     } else if (key in KEY_ACTIONS) {
       state = KEY_ACTIONS[key](state);
     } else {
-      return; // operator, equals and sign keys arrive in later features
+      return; // remaining operator and sign keys arrive in later features
     }
     render();
   });
