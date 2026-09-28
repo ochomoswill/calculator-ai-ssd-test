@@ -4,16 +4,16 @@ Ordered queue of features. Each builds only on the ones above it. Design decisio
 
 ---
 
-### 1. Project scaffold
-- **Delivers:** An empty calculator app that builds, runs locally and has a passing test suite.
-- **Status:** planned
-- **Build:** React and TypeScript static bundle with unit and component test runners, per [Requirement 1](tech-design-web.md#requirement-1-a-calculator-application-for-web-and-mobile).
-- **Done when:** A fresh clone builds, serves a blank page and runs an empty test suite green.
+### 1. Calculator interface
+- **Delivers:** A calculator app that builds, runs locally, has a passing test suite and shows the static display and keypad layout.
+- **Status:** done
+- **Build:** Plain HTML, CSS and JavaScript ES modules with no build step, test runners, native buttons and the output element display, per [Requirement 1](tech-design-web.md#requirement-1-a-calculator-application-for-web-and-mobile). Spec: [2026-09-28-calculator-interface](2026-09-28-calculator-interface/requirements.md).
+- **Done when:** A fresh clone builds, serves the keypad and display with correct accessible names, and the test suite is green.
 
 ### 2. Calculation engine core
 - **Delivers:** Nothing visible yet; the pure logic that will hold what the user types.
 - **Status:** planned
-- **Build:** DOM-free TypeScript module with the entry state machine and typed result/error interface, per [Requirement 1](tech-design-web.md#requirement-1-a-calculator-application-for-web-and-mobile).
+- **Build:** DOM-free JavaScript ES module with the entry state machine and typed result/error interface, per [Requirement 1](tech-design-web.md#requirement-1-a-calculator-application-for-web-and-mobile).
 - **Done when:** Unit tests cover digit entry, decimal point, clear and clear-entry with no browser API imported.
 
 ### 3. Number formatting
@@ -85,7 +85,7 @@ Ordered queue of features. Each builds only on the ones above it. Design decisio
 ### 14. Offline support
 - **Delivers:** The installed calculator works with no network connection.
 - **Status:** planned
-- **Build:** Service worker precaching the bundle with a versioned cache-first strategy, per [Requirement 1](tech-design-web.md#requirement-1-a-calculator-application-for-web-and-mobile).
+- **Build:** Service worker precaching the static files with a versioned cache-first strategy, per [Requirement 1](tech-design-web.md#requirement-1-a-calculator-application-for-web-and-mobile).
 - **Done when:** After one online visit the app loads and calculates with the network disabled, and a new deploy replaces the old cache.
 
 ### 15. Engine package for mobile

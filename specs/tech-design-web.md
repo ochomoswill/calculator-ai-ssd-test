@@ -12,18 +12,18 @@ The brief contains five requirements: the application must run on web and mobile
 
 ### Implementation decision
 
-The web application will be a Progressive Web App (PWA) built with React and TypeScript. It is served as a single static bundle with no server-side calculation: every operation runs in the browser.
+The web application will be a Progressive Web App (PWA) built with plain HTML, CSS and JavaScript, with no framework and no build step. It is served as static files with no server-side calculation: every operation runs in the browser. JavaScript is written as native ES modules, which browsers load directly, so the files on disk are the files that ship.
 
 The application is split into two layers with a hard boundary between them:
 
-- **A calculation engine** with no dependency on the DOM, React, or any browser API. It exposes a small, pure interface: it takes an operation and two operands and returns either a result or a typed error. It also owns the state machine for keypad entry (current operand, pending operator, display value).
-- **A presentation layer** (React components) that renders the display and keypad and forwards user input to the engine.
+- **A calculation engine** with no dependency on the DOM or any browser API. It exposes a small, pure interface: it takes an operation and two operands and returns either a result or a typed error. It also owns the state machine for keypad entry (current operand, pending operator, display value).
+- **A presentation layer** (HTML markup plus a small set of JavaScript modules) that renders the display and keypad and forwards user input to the engine.
 
-This boundary is the main concession to the "mobile" half of the brief. Because the engine is plain TypeScript, it can be published as an internal package and consumed unchanged by a React Native app later, so the two apps never disagree on an answer. The web app itself also installs on phones as a PWA, which gives an installable, offline-capable mobile experience before a native app exists.
+This boundary is the main concession to the "mobile" half of the brief. Because the engine is a plain JavaScript ES module, it can be published as an internal package and consumed unchanged by any JavaScript-based mobile app later, so the two apps never disagree on an answer. The web app itself also installs on phones as a PWA, which gives an installable, offline-capable mobile experience before a native app exists.
 
 **Installability.** MDN lists the installability prerequisites, and the design meets all of them: the app is served over HTTPS, and every page links a web app manifest that provides a name and short name, a start URL, icons at both 192 and 512 pixels, and a display mode of "standalone" so the installed app opens in its own window without browser chrome. A service worker is not required for installability, but is added for the offline behaviour below.
 
-**Offline operation.** A service worker precaches the whole static bundle during its install step using the Cache interface, then serves requests with the cache-first strategy MDN documents: answer from the cache if present, otherwise fetch from the network and store the response for next time. A calculator has no remote data, so this makes the entire app work with no connectivity after the first visit. Cache names are versioned so a new deployment can discard the previous bundle.
+**Offline operation.** A service worker precaches all the static files during its install step using the Cache interface, then serves requests with the cache-first strategy MDN documents: answer from the cache if present, otherwise fetch from the network and store the response for next time. A calculator has no remote data, so this makes the entire app work with no connectivity after the first visit. Cache names are versioned so a new deployment can discard the previous files.
 
 **Display element.** The calculator's result display is the HTML output element. MDN describes it as the container for "the results of a calculation", and it carries an implicit ARIA role of status, which is a polite, atomic live region. Screen readers therefore announce each new result without focus leaving the keypad, and the app does not need hand-written live-region attributes. Because live-region updates are announced as plain text, the display holds only the formatted value or error message and no nested controls.
 
@@ -37,7 +37,7 @@ This boundary is the main concession to the "mobile" half of the brief. Because 
 
 **Persistence.** The last display value and a short calculation history are stored in Web Storage (localStorage). MDN documents that access can throw a security error when the origin is invalid or the user has blocked data persistence, that private browsing may give a store with zero quota, and that writes can fail with a quota error. The app therefore uses MDN's feature-detection pattern before first use and wraps every read and write, so the calculator works identically when storage is unavailable.
 
-**Testing.** The engine is covered by unit tests with exhaustive cases per operation. The presentation layer is covered by component tests that drive the keypad through the accessibility tree (roles and names) rather than CSS selectors, so the tests fail if the accessible names regress.
+**Testing.** The engine is covered by unit tests with exhaustive cases per operation, run with Node's built-in test runner because the engine has no browser dependency. The presentation layer is covered by DOM tests that load the real HTML page into a DOM implementation and drive the keypad through roles and accessible names rather than CSS selectors, so the tests fail if the accessible names regress.
 
 MDN references: Making PWAs installable; Web app manifest `display` member; Offline and background operation (Service Worker API, Cache); `<output>` element; ARIA `status` role; `<button>` element; Keyboard-navigable JavaScript widgets; `KeyboardEvent` and `KeyboardEvent.key`; Key values for keyboard events; CSS container queries; CSS logical properties and values; `<meta name="viewport">`; `color-scheme`; `prefers-color-scheme`; `prefers-reduced-motion`; `Window.localStorage`; Using the Web Storage API.
 
@@ -105,7 +105,8 @@ MDN references: Division operator (`/`); `Number.isFinite()`; `NaN`; Key values 
 
 ## Key design decisions
 
-- The calculation engine is pure TypeScript with no browser or React dependency, so the mobile app can reuse it unchanged and both platforms compute identical results.
+- The calculation engine is a pure JavaScript module with no browser dependency, so the mobile app can reuse it unchanged and both platforms compute identical results.
+- The app is plain HTML, CSS and JavaScript ES modules with no framework or build step, so the files on disk are the files that ship.
 - The web app ships as a Progressive Web App that meets MDN's installability prerequisites (HTTPS, manifest with name, icons, start URL and standalone display) and adds a cache-first service worker for full offline use.
 - Arithmetic uses standard IEEE 754 numbers with full precision kept internally and rounding applied only at display time, hiding binary floating-point artefacts without accumulating error.
 - All number formatting goes through the internationalisation number-formatting API, which supplies significant-digit rounding, locale separators and the locale minus sign in one place.
