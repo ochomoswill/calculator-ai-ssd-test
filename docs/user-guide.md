@@ -10,6 +10,7 @@ This is a simple calculator for adding, subtracting, multiplying and dividing nu
 2. [Calculation engine core](#calculation-engine-core)
 3. [Number formatting](#number-formatting)
 4. [Keypad and display](#keypad-and-display)
+5. [Addition](#addition)
 
 ---
 
@@ -88,7 +89,7 @@ Numbers appear like this:
 
 ### Related features
 
-[Calculation engine core](#calculation-engine-core), above, supplies the typed number this feature formats. [Keypad and display](#keypad-and-display) puts these formats on screen. Coming soon: each arithmetic operation (roadmap rows 5, 7, 8 and 9) will produce the results they apply to.
+[Calculation engine core](#calculation-engine-core), above, supplies the typed number this feature formats. [Keypad and display](#keypad-and-display) puts these formats on screen. [Addition](#addition) produces the first results they apply to; subtraction, multiplication and division (roadmap rows 7, 8 and 9) will follow.
 
 ---
 
@@ -96,7 +97,7 @@ Numbers appear like this:
 
 ### What this feature does
 
-The calculator now responds when you use it. Pressing a digit, the decimal point or either clear key changes the number in the result area straight away, formatted for your language and region. This is the first release in which the calculator visibly does something. The Add, Subtract, Multiply, Divide, Equals and Toggle sign keys are still inactive; pressing them does nothing until their own features arrive.
+The calculator now responds when you use it. Pressing a digit, the decimal point or either clear key changes the number in the result area straight away, formatted for your language and region. This is the first release in which the calculator visibly does something. When this feature first shipped the operation keys were inactive; Add and Equals came to life with [Addition](#addition), and the other operations follow in their own features.
 
 ### Setup
 
@@ -113,5 +114,31 @@ No setup is needed. Open the calculator as before; see the project README if you
 
 ### Related features
 
-[Calculator interface](#calculator-interface) provides the keys and display this feature connects. [Calculation engine core](#calculation-engine-core) supplies the number-entry rules you see, and [Number formatting](#number-formatting) decides how the number looks. Coming soon: each arithmetic operation (roadmap rows 5, 7, 8 and 9) will make the remaining keys work, and Physical keyboard input (row 10) will let you type without focusing a key first.
+[Calculator interface](#calculator-interface) provides the keys and display this feature connects. [Calculation engine core](#calculation-engine-core) supplies the number-entry rules you see, and [Number formatting](#number-formatting) decides how the number looks. [Addition](#addition) makes the Add and Equals keys work. Coming soon: subtraction, multiplication and division (roadmap rows 7, 8 and 9) will make the remaining keys work, and Physical keyboard input (row 10) will let you type without focusing a key first.
+
+---
+
+## Addition
+
+### What this feature does
+
+You can now add numbers. Enter a number, press Add, enter another and press Equals to see the total. You can keep pressing Add to build up a running total, and the result of one sum can be the start of the next. Totals are shown rounded to twelve significant figures, so adding 0.1 and 0.2 shows 0.3. Subtract, Multiply, Divide and Toggle sign are still inactive.
+
+### Setup
+
+No setup is needed.
+
+### How to use
+
+1. Enter the first number, for example 12.
+2. Press Add. The display keeps showing 12 while it waits for the next number.
+3. Enter the second number, for example 30.
+4. Press Equals. The display shows 42.
+5. To add several numbers, press Add between each one; the display shows the running total after each press. Finish with Equals.
+6. To continue from a result, press Add straight after Equals and enter the next number, or start typing a new number to begin a fresh calculation.
+7. Press Clear entry to retype the current number without losing a sum in progress, or Clear all to start over.
+
+### Related features
+
+[Keypad and display](#keypad-and-display) provides the keys and display this feature uses, and [Number formatting](#number-formatting) decides how totals look. Coming soon: Range check and error state (roadmap row 6) will handle numbers too large to show, and Subtraction (row 7), Multiplication (row 8) and Division (row 9) will complete the operations.
 
