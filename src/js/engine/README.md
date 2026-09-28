@@ -20,7 +20,7 @@ State fields:
 | `display` | Raw text for the interface: `entry` while typing, the raw result string when a result is on show. The formatter renders it. |
 | `operator` | Pending operation name (`add`), or empty. |
 | `operand` | Left operand as a full-precision number string, or empty. |
-| `error` | Error kind from the exported `ERRORS` table (`overflow` so far), or empty. In error, only the clear actions do anything; both return the initial state. |
+| `error` | Error kind from the exported `ERRORS` table (`overflow`, `divide-by-zero`), or empty. In error, only the clear actions do anything; both return the initial state. |
 | `typing` | True while `entry` reflects input since the last operator or equals. |
 | `result` | Finished value on show (a number), or `null`. When set, `display` is its raw string. |
 
@@ -29,7 +29,8 @@ Actions: `initialState()`, `inputDigit(state, digit)`, `inputDecimal(state)`,
 `toggleSign(state)`. Pressing `subtract` before anything has been entered negates
 instead of recording an operation: the entry becomes the placeholder `-0`, which
 the next digit turns into a negative number.
-Operations live in one table keyed by name (`add`, `subtract`, `multiply`); results are kept at
+Operations live in one table keyed by name (`add`, `subtract`, `multiply`, `divide`); results are kept at
 full precision and rounded only by the presentation-side formatter. Every result
-is checked with `Number.isFinite`; a non-finite result enters the `overflow` error state. An entry holds at most `MAX_ENTRY_DIGITS`
+is checked with `Number.isFinite`; a non-finite result enters the `overflow` error state, and a division whose divisor
+is zero enters `divide-by-zero` before the operator runs. An entry holds at most `MAX_ENTRY_DIGITS`
 digits, matching the display cap in Requirement 2 of the design.

@@ -19,7 +19,7 @@ describe("Feature 5: addition (engine)", () => {
 
   test("A2: operator accepts only add", () => {
     const s = type(initialState(), "1");
-    assert.throws(() => inputOperator(s, "divide"), RangeError);
+    assert.throws(() => inputOperator(s, "modulo"), RangeError);
     assert.throws(() => inputOperator(s, "x"), RangeError);
     assert.doesNotThrow(() => inputOperator(s, "add"));
   });
@@ -114,12 +114,10 @@ describe("Feature 5: addition (keypad and display)", () => {
     }
   });
 
-  test("A14: remaining keys inert", async () => {
+  test("A14: result survives pressing another operator", async () => {
     const { display, type: t, click } = await mountPage("en-US");
     t("12"); click("Add"); t("30"); click("Equals");
-    for (const name of ["Divide"]) {
-      assert.doesNotThrow(() => click(name));
-      assert.equal(shown(display), "42", name);
-    }
+    click("Divide");
+    assert.equal(shown(display), "42");
   });
 });

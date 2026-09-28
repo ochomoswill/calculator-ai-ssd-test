@@ -53,10 +53,10 @@ describe("Feature 8: multiplication (keypad and display)", () => {
     assert.equal(shown(display), "Number too large");
   });
 
-  test("A8: divide inert", async () => {
+  test("A8: result survives pressing another operator", async () => {
     const { display, type: t, click } = await mountPage("en-US");
     t("12"); click("Multiply"); t("3"); click("Equals");
-    assert.doesNotThrow(() => click("Divide"));
+    click("Divide");
     assert.equal(shown(display), "36");
   });
 });
