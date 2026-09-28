@@ -1,11 +1,11 @@
-// Loads index.html into jsdom and offers small role / accessible-name helpers.
+// Loads src/index.html into jsdom and offers small role / accessible-name helpers.
 // Scripts are not executed: feature 1's entry module attaches no behaviour,
 // and jsdom does not run ES module scripts.
 import { readFile } from "node:fs/promises";
 import { JSDOM } from "jsdom";
 
 export async function loadPage() {
-  const html = await readFile(new URL("../../index.html", import.meta.url), "utf8");
+  const html = await readFile(new URL("../../src/index.html", import.meta.url), "utf8");
   const dom = new JSDOM(html, { pretendToBeVisual: true });
   return dom.window.document;
 }

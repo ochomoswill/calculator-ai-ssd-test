@@ -98,8 +98,8 @@ describe("Feature 1: calculator interface", () => {
 
   test("A12: style declarations for container, colour scheme and key gap", async () => {
     const { readFile } = await import("node:fs/promises");
-    const base = await readFile(new URL("../css/base.css", import.meta.url), "utf8");
-    const calc = await readFile(new URL("../css/calculator.css", import.meta.url), "utf8");
+    const base = await readFile(new URL("../src/css/base.css", import.meta.url), "utf8");
+    const calc = await readFile(new URL("../src/css/calculator.css", import.meta.url), "utf8");
     assert.match(base, /:root\s*\{[^}]*color-scheme:\s*light dark/);
     assert.match(calc, /\.calculator\s*\{[^}]*container-type:\s*inline-size/);
     assert.match(calc, /\.keypad\s*\{[^}]*gap:\s*(?!0[;\s])/);

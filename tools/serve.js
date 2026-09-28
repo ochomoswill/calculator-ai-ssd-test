@@ -1,10 +1,11 @@
-// Minimal static file server for local development. No dependencies.
+// Minimal static file server for local development. Serves src/. No dependencies.
 import { createServer } from "node:http";
 import { createReadStream } from "node:fs";
 import { stat } from "node:fs/promises";
 import { extname, join, normalize } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const root = process.cwd();
+const root = fileURLToPath(new URL("../src/", import.meta.url));
 const port = Number(process.env.PORT ?? 8080);
 const types = {
   ".html": "text/html; charset=utf-8",

@@ -7,6 +7,6 @@ See `specs/` for the brief, technical design, roadmap and feature specs.
 
 ```sh
 npm install      # install the test-only dependency (jsdom)
-npm run serve    # serve the site at http://localhost:8080
+npm run serve    # serve src/ at http://localhost:8080
 npm test         # run unit and DOM tests with Node's built-in runner
 ```
