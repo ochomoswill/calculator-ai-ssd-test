@@ -32,3 +32,6 @@ Added physical keyboard input: digits, point or comma, + - * x /, Enter or =, Es
 
 2026-09-28 — responsive-layout-and-theming
 Styled the calculator: colour tokens with automatic light and dark themes, container queries that scale the display and keys, tinted operation keys, a warning colour for error messages, visible focus rings, and press feedback disabled under reduced motion, with stylesheet inspection tests.
+
+2026-09-28 — persistence
+Added persistence: the display value, any calculation in progress and a ten-item History list survive a reload, stored in the browser behind MDN's storage feature check and validated on load, with a Clear history button, identical behaviour when storage is blocked or full, and storage and DOM tests.

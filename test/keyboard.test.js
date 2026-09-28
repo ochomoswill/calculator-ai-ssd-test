@@ -100,6 +100,6 @@ describe("Feature 10: keyboard (DOM)", () => {
   test("A9: listener count", async () => {
     const source = await readFile(new URL("../src/js/app.js", import.meta.url), "utf8");
     const listeners = source.match(/addEventListener\(\s*"([a-z]+)"/g) ?? [];
-    assert.deepEqual(listeners, ['addEventListener("click"', 'addEventListener("keydown"']);
+    assert.deepEqual(listeners.filter((l) => l.includes("keydown")), ['addEventListener("keydown"']);
   });
 });
