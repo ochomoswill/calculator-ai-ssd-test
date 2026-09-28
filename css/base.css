@@ -1,0 +1,17 @@
+:root {
+  color-scheme: light dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-block-size: 100vh;
+  background: Canvas;
+  color: CanvasText;
+  font-family: system-ui, sans-serif;
+}
