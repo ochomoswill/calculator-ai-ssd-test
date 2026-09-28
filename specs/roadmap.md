@@ -25,8 +25,8 @@ Ordered queue of features. Each builds only on the ones above it. Design decisio
 ### 4. Keypad and display
 - **Delivers:** The user can tap on-screen keys and see the number they are entering.
 - **Status:** planned
-- **Build:** Native buttons with accessible names and the HTML output element as the display, per [Requirement 1](tech-design-web.md#requirement-1-a-calculator-application-for-web-and-mobile).
-- **Done when:** DOM tests drive digit, decimal and clear keys through the accessibility tree and the display updates.
+- **Build:** Entry module that listens for key activations on the existing keypad (row 1), applies the matching engine action (row 2) and renders the entry through the formatter (row 3) into the output element, per [Requirement 1](tech-design-web.md#requirement-1-a-calculator-application-for-web-and-mobile).
+- **Done when:** DOM tests drive digit, decimal and clear keys through the accessibility tree and the display shows the locale-formatted entry.
 
 ### 5. Addition
 - **Delivers:** The user can add two numbers and chain further additions.
