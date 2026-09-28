@@ -42,8 +42,8 @@ Ordered queue of features. Each builds only on the ones above it. Design decisio
 
 ### 7. Subtraction
 - **Delivers:** The user can subtract, enter negative numbers and toggle the sign of the current value.
-- **Status:** planned
-- **Build:** Pure engine function plus minus-key disambiguation and a sign-toggle key, per [Requirement 3](tech-design-web.md#requirement-3-subtraction).
+- **Status:** done
+- **Build:** Pure engine function plus minus-key disambiguation and a sign-toggle key, per [Requirement 3](tech-design-web.md#requirement-3-subtraction). Spec: [2026-09-28-subtraction](2026-09-28-subtraction/requirements.md).
 - **Done when:** Tests cover subtraction, negate-before-operand, sign toggle and correctly signed display output.
 
 ### 8. Multiplication

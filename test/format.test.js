@@ -129,7 +129,7 @@ describe("Feature 3: number formatting", () => {
   });
 
   test("invalid entry strings throw", () => {
-    for (const bad of ["", "1.2.3", "-1", "abc", 12, null]) {
+    for (const bad of ["", "1.2.3", "--1", "abc", 12, null]) {
       assert.throws(() => formatEntry(bad, COMMA_GROUP), RangeError);
     }
   });

@@ -25,8 +25,11 @@ State fields:
 | `result` | Finished value on show (a number), or `null`. When set, `display` is its raw string. |
 
 Actions: `initialState()`, `inputDigit(state, digit)`, `inputDecimal(state)`,
-`clearEntry(state)`, `clearAll()`, `inputOperator(state, name)`, `evaluate(state)`.
-Operations live in one table keyed by name (`add` so far); results are kept at
+`clearEntry(state)`, `clearAll()`, `inputOperator(state, name)`, `evaluate(state)`,
+`toggleSign(state)`. Pressing `subtract` before anything has been entered negates
+instead of recording an operation: the entry becomes the placeholder `-0`, which
+the next digit turns into a negative number.
+Operations live in one table keyed by name (`add`, `subtract`); results are kept at
 full precision and rounded only by the presentation-side formatter. Every result
 is checked with `Number.isFinite`; a non-finite result enters the `overflow` error state. An entry holds at most `MAX_ENTRY_DIGITS`
 digits, matching the display cap in Requirement 2 of the design.
