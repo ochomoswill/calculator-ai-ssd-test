@@ -29,3 +29,6 @@ Added division, completing the four operations: the Divide key joins the chain, 
 
 2026-09-28 — physical-keyboard-input
 Added physical keyboard input: digits, point or comma, + - * x /, Enter or =, Escape, Backspace and Delete drive the calculator from the main row or numeric keypad, with modifier shortcuts left to the browser, a new delete-last engine action, and DOM tests.
+
+2026-09-28 — responsive-layout-and-theming
+Styled the calculator: colour tokens with automatic light and dark themes, container queries that scale the display and keys, tinted operation keys, a warning colour for error messages, visible focus rings, and press feedback disabled under reduced motion, with stylesheet inspection tests.
