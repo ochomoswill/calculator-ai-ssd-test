@@ -7,6 +7,7 @@ This is a simple calculator for adding, subtracting, multiplying and dividing nu
 ## Table of contents
 
 1. [Calculator interface](#calculator-interface)
+2. [Calculation engine core](#calculation-engine-core)
 
 ---
 
@@ -32,3 +33,32 @@ No setup is needed. Open the calculator's web address in any modern browser. If 
 ### Related features
 
 Coming soon. Later sections will cover entering numbers, each arithmetic operation, keyboard shortcuts, saving your last result and installing the calculator as an app.
+
+---
+
+## Calculation engine core
+
+### What this feature does
+
+This feature adds the part of the calculator that remembers the number you are typing. It follows the rules you would expect from a pocket calculator: the first digit you type replaces the starting zero, later digits join on the end, you can add one decimal point, and there are two ways to clear. Nothing changes on screen in this release. The keypad still does not respond, and the result area still shows 0, because the connection between the keys and this number-entry logic arrives in a later feature.
+
+### Setup
+
+No setup is needed. Nothing about running the calculator has changed since the previous feature; see the project README if you run it on your own computer.
+
+### How to use
+
+There is nothing new to do yet. When a later feature connects the keys, typing a number will work like this:
+
+1. The result area starts at 0. Press a digit and it replaces the 0. Pressing 0 on its own leaves it at 0.
+2. Press more digits and they join on the end, so pressing 7, 8, 9 shows 789.
+3. Press the decimal point to start a fraction. Pressing it first shows "0." and a following digit appears after the point.
+4. Press the decimal point a second time in the same number and nothing happens; a number can have only one.
+5. A number can hold up to 12 digits. Once it does, further digits are ignored until you clear.
+6. Press Clear entry to set the number back to 0 while keeping any calculation in progress.
+7. Press Clear all to return the whole calculator to its starting state.
+
+### Related features
+
+Coming soon. Number formatting with your local separators (roadmap row 3) will change how the typed number is shown, and connecting the keypad (row 4) will make the steps above happen on screen. Calculator interface, above, is the screen these rules will drive.
+
