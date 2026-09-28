@@ -11,6 +11,7 @@ This is a simple calculator for adding, subtracting, multiplying and dividing nu
 3. [Number formatting](#number-formatting)
 4. [Keypad and display](#keypad-and-display)
 5. [Addition](#addition)
+6. [Range check and error state](#range-check-and-error-state)
 
 ---
 
@@ -140,5 +141,27 @@ No setup is needed.
 
 ### Related features
 
-[Keypad and display](#keypad-and-display) provides the keys and display this feature uses, and [Number formatting](#number-formatting) decides how totals look. Coming soon: Range check and error state (roadmap row 6) will handle numbers too large to show, and Subtraction (row 7), Multiplication (row 8) and Division (row 9) will complete the operations.
+[Keypad and display](#keypad-and-display) provides the keys and display this feature uses, and [Number formatting](#number-formatting) decides how totals look. [Range check and error state](#range-check-and-error-state) handles totals too large to show. Coming soon: Subtraction (roadmap row 7), Multiplication (row 8) and Division (row 9) will complete the operations.
+
+---
+
+## Range check and error state
+
+### What this feature does
+
+If a calculation produces a number too large for the calculator to represent, the display shows the message "Number too large" instead of a meaningless value. While the message is showing, the digit, decimal point, operation and Equals keys are ignored so a bad value cannot carry into the next calculation. Pressing either clear key returns the calculator to 0. If you use a screen reader, the message is announced when it appears. With addition alone this limit is very hard to reach; it matters more once multiplication arrives.
+
+### Setup
+
+No setup is needed.
+
+### How to use
+
+1. If the display shows "Number too large", the last calculation could not be completed.
+2. Press Clear entry or Clear all. The display returns to 0 and the calculator is ready again.
+3. Re-enter the calculation with smaller numbers.
+
+### Related features
+
+[Addition](#addition) is the first operation checked this way. Coming soon: Division (roadmap row 9) will add a second message for dividing by zero, and Responsive layout and theming (row 11) will give the error message a distinct look.
 

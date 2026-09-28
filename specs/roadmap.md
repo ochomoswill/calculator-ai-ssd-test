@@ -36,8 +36,8 @@ Ordered queue of features. Each builds only on the ones above it. Design decisio
 
 ### 6. Range check and error state
 - **Delivers:** Results too large to represent show a clear error instead of nonsense, and clear recovers.
-- **Status:** planned
-- **Build:** Finite-number check after every operation returning a typed overflow error that the display announces, per [Requirement 2](tech-design-web.md#requirement-2-addition).
+- **Status:** done
+- **Build:** Finite-number check after every operation returning a typed overflow error that the display announces, per [Requirement 2](tech-design-web.md#requirement-2-addition). Spec: [2026-09-28-range-check-and-error-state](2026-09-28-range-check-and-error-state/requirements.md).
 - **Done when:** Tests show an overflowing addition displays the error, blocks further operators and clears back to zero.
 
 ### 7. Subtraction

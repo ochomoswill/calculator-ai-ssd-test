@@ -20,12 +20,13 @@ State fields:
 | `display` | Raw text for the interface: `entry` while typing, the raw result string when a result is on show. The formatter renders it. |
 | `operator` | Pending operation name (`add`), or empty. |
 | `operand` | Left operand as a full-precision number string, or empty. |
-| `error` | Error kind. Empty until range and divide-by-zero checks arrive (rows 6 and 9). |
+| `error` | Error kind from the exported `ERRORS` table (`overflow` so far), or empty. In error, only the clear actions do anything; both return the initial state. |
 | `typing` | True while `entry` reflects input since the last operator or equals. |
 | `result` | Finished value on show (a number), or `null`. When set, `display` is its raw string. |
 
 Actions: `initialState()`, `inputDigit(state, digit)`, `inputDecimal(state)`,
 `clearEntry(state)`, `clearAll()`, `inputOperator(state, name)`, `evaluate(state)`.
 Operations live in one table keyed by name (`add` so far); results are kept at
-full precision and rounded only by the presentation-side formatter. An entry holds at most `MAX_ENTRY_DIGITS`
+full precision and rounded only by the presentation-side formatter. Every result
+is checked with `Number.isFinite`; a non-finite result enters the `overflow` error state. An entry holds at most `MAX_ENTRY_DIGITS`
 digits, matching the display cap in Requirement 2 of the design.

@@ -2,8 +2,13 @@
 // the engine's entry through the formatter into the result display.
 // See specs/tech-design-web.md, Requirement 1 (presentation layer) and
 // Requirement 2 (entry formatting). Touches the DOM only through the root it is given.
-import { initialState, inputDigit, inputDecimal, clearEntry, clearAll, inputOperator, evaluate } from "./engine/engine.js";
+import { initialState, inputDigit, inputDecimal, clearEntry, clearAll, inputOperator, evaluate, ERRORS } from "./engine/engine.js";
 import { formatEntry, formatValue } from "./format.js";
+
+/** User-facing text for each engine error kind. */
+const ERROR_MESSAGES = Object.freeze({
+  [ERRORS.overflow]: "Number too large",
+});
 
 const DIGIT_KEYS = new Set(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]);
 
@@ -19,16 +24,23 @@ const KEY_ACTIONS = Object.freeze({
 /**
  * Wire the keypad and display found inside `root`.
  * @param {Element} root the calculator root element
- * @param {{ locale?: string }} [options] locale for formatting; defaults to the runtime locale
+ * @param {{ locale?: string, state?: object }} [options] locale for formatting (defaults to the
+ *   runtime locale) and an optional engine state to start from (defaults to the initial state)
  */
-export function mount(root, { locale } = {}) {
+export function mount(root, { locale, state: startingState } = {}) {
   const keypad = root.querySelector('[aria-label="Keypad"]');
   const display = root.querySelector('output[aria-label="Result"]');
   if (!keypad || !display) throw new Error("mount: root must contain the Keypad region and the Result output");
 
-  let state = initialState();
+  let state = startingState ?? initialState();
 
   const render = () => {
+    if (state.error) {
+      display.textContent = ERROR_MESSAGES[state.error] ?? state.error;
+      display.setAttribute("data-error", state.error);
+      return;
+    }
+    display.removeAttribute("data-error");
     display.textContent =
       state.result !== null ? formatValue(state.result, locale) : formatEntry(state.entry, locale);
   };

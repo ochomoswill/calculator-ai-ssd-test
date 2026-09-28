@@ -8,6 +8,11 @@ export const MAX_ENTRY_DIGITS = 12;
 
 const DIGITS = new Set(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]);
 
+/** Error kinds the engine can enter. The presentation layer maps them to messages. */
+export const ERRORS = Object.freeze({
+  overflow: "overflow",
+});
+
 /** Operations by name. Later features add entries here. */
 const OPERATIONS = Object.freeze({
   add: (a, b) => a + b,
@@ -19,7 +24,7 @@ const OPERATIONS = Object.freeze({
  * @property {string} display  Raw text for the interface: entry while typing, String(result) when a result is shown.
  * @property {string} operator Pending operation name ("add") or "".
  * @property {string} operand  Left operand as a full-precision number string, or "".
- * @property {string} error    Error kind; empty until range/zero checks arrive.
+ * @property {string} error    Error kind from ERRORS, or "" when no error.
  * @property {boolean} typing  True when entry reflects input since the last operator/equals.
  * @property {number|null} result Finished value on show, or null.
  */
@@ -34,6 +39,7 @@ export function inputDigit(state, digit) {
   if (typeof digit !== "string" || !DIGITS.has(digit)) {
     throw new RangeError(`inputDigit expects a single digit character, got ${JSON.stringify(digit)}`);
   }
+  if (state.error) return state;
   const base = state.typing ? state : startEntry(state);
   if (base.entry === "0") return withEntry(base, digit);
   if (countDigits(base.entry) >= MAX_ENTRY_DIGITS) return base === state ? state : base;
@@ -42,6 +48,7 @@ export function inputDigit(state, digit) {
 
 /** Append the decimal point if the entry has none, starting a new entry if a result is on show. */
 export function inputDecimal(state) {
+  if (state.error) return state;
   const base = state.typing ? state : startEntry(state);
   if (base.entry.includes(".")) return base === state ? state : base;
   return withEntry(base, base.entry + ".");
@@ -49,6 +56,7 @@ export function inputDecimal(state) {
 
 /** Reset the current entry only, keeping any pending operator and operand. */
 export function clearEntry(state) {
+  if (state.error) return initialState();
   return freeze({ ...state, entry: "0", display: "0", typing: true, result: null });
 }
 
@@ -66,6 +74,7 @@ export function inputOperator(state, operation) {
   if (!Object.hasOwn(OPERATIONS, operation)) {
     throw new RangeError(`inputOperator expects one of ${Object.keys(OPERATIONS).join(", ")}, got ${JSON.stringify(operation)}`);
   }
+  if (state.error) return state;
   if (state.operator && !state.typing) {
     return state.operator === operation ? state : freeze({ ...state, operator: operation });
   }
@@ -75,7 +84,7 @@ export function inputOperator(state, operation) {
 
 /** Compute the pending operation and show its result. */
 export function evaluate(state) {
-  if (!state.operator) return state;
+  if (state.error || !state.operator) return state;
   const value = compute(state);
   return showResult(state, value, { operator: "", operand: "" });
 }
@@ -91,7 +100,12 @@ function currentValue(state) {
 }
 
 function showResult(state, value, fields) {
+  if (!Number.isFinite(value)) return errorState(ERRORS.overflow);
   return freeze({ ...state, ...fields, entry: "0", display: String(value), typing: false, result: value });
+}
+
+function errorState(kind) {
+  return freeze({ ...initialState(), error: kind, display: kind, typing: false });
 }
 
 function startEntry(state) {
