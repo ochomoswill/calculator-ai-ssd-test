@@ -19,6 +19,7 @@ const KEY_ACTIONS = Object.freeze({
   "clear-all": clearAll,
   add: (state) => inputOperator(state, "add"),
   subtract: (state) => inputOperator(state, "subtract"),
+  multiply: (state) => inputOperator(state, "multiply"),
   "toggle-sign": toggleSign,
   equals: evaluate,
 });

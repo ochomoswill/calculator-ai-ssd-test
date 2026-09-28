@@ -20,3 +20,6 @@ Added the range check: any result that is not a finite number now shows "Number 
 
 2026-09-28 — subtraction
 Added subtraction, negative numbers and the Toggle sign key: Subtract chains with Add, pressing it first starts a negative number, and negative entries and results show the locale's minus sign, with engine, formatter and DOM tests.
+
+2026-09-28 — multiplication
+Added multiplication: the Multiply key joins the left-to-right operation chain, products are rounded to twelve significant digits on screen, and overflow through Equals or a chained operator shows "Number too large", with engine and DOM tests.

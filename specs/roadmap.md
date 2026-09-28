@@ -48,8 +48,8 @@ Ordered queue of features. Each builds only on the ones above it. Design decisio
 
 ### 8. Multiplication
 - **Delivers:** The user can multiply two numbers.
-- **Status:** planned
-- **Build:** Pure engine function wired to a multiply key with a text accessible name, per [Requirement 4](tech-design-web.md#requirement-4-multiplication).
+- **Status:** done
+- **Build:** Pure engine function wired to a multiply key with a text accessible name, per [Requirement 4](tech-design-web.md#requirement-4-multiplication). Spec: [2026-09-28-multiplication](2026-09-28-multiplication/requirements.md).
 - **Done when:** Tests cover multiplication, chained operations and overflow at the representable edge.
 
 ### 9. Division

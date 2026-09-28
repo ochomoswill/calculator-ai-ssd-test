@@ -108,7 +108,7 @@ describe("Feature 7: subtraction (keypad and display)", () => {
   test("A12: remaining keys inert", async () => {
     const { display, type: t, click } = await mountPage("en-US");
     t("12"); click("Subtract"); t("30"); click("Equals");
-    for (const name of ["Multiply", "Divide"]) {
+    for (const name of ["Divide"]) {
       assert.doesNotThrow(() => click(name));
       assert.equal(shown(display), "-18", name);
     }

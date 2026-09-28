@@ -17,6 +17,7 @@ export const ERRORS = Object.freeze({
 const OPERATIONS = Object.freeze({
   add: (a, b) => a + b,
   subtract: (a, b) => a - b,
+  multiply: (a, b) => a * b,
 });
 
 /** Entry that shows a minus sign but no digits yet: the user pressed minus or toggled sign on zero. */

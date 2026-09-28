@@ -79,7 +79,7 @@ MDN references: `Intl.NumberFormat()` constructor (`signDisplay`); `Intl.NumberF
 
 ### Implementation decision
 
-Multiplication follows the same pure-function shape, with the same representation, formatting and range rules. Overflow to infinity is more likely here than in addition, so the finite-number check is the primary failure path and is tested with operands at the edge of the representable range.
+Multiplication follows the same pure-function shape, with the same representation, formatting and range rules. Chained operations apply left to right in the order pressed, as on a pocket calculator; there is no operator precedence. Overflow to infinity is more likely here than in addition, so the finite-number check is the primary failure path and is tested with operands at the edge of the representable range.
 
 The keypad renders the conventional multiplication-sign glyph on the button with a text accessible name of "multiply", following MDN's guidance that icon-only buttons need an accessible name, so a screen reader user hears the operation rather than a symbol name. Physical keyboard input accepts the asterisk character (which MDN confirms is what the numeric keypad's multiply key reports in modern browsers) and the letter x.
 
