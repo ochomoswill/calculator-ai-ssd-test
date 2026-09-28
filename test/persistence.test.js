@@ -1,7 +1,7 @@
 import { test, describe } from "node:test";
 import assert from "node:assert/strict";
 import { storageAvailable, load, save, STORAGE_KEY, MAX_HISTORY } from "../src/js/storage.js";
-import { initialState } from "../src/js/engine/engine.js";
+import { initialState } from "@calculator/engine";
 import { mountPage } from "./helpers/dom.js";
 
 class FakeStorage {

@@ -1,4 +1,9 @@
-# Calculation engine
+# Calculation engine (`@calculator/engine`)
+
+An internal npm package. The web app imports it as `@calculator/engine`: the
+page's import map resolves that name in the browser with no build step, and the
+root package's workspace link resolves it in Node. A mobile app consumes the same
+package unchanged.
 
 The DOM-free calculation engine described in
 [Requirement 1 of the technical design](../../../specs/tech-design-web.md#requirement-1-a-calculator-application-for-web-and-mobile).

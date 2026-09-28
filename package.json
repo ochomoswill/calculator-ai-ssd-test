@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "workspaces": ["src/js/engine"],
   "scripts": {
     "serve": "node tools/serve.js",
     "test": "node --test test/*.test.js",

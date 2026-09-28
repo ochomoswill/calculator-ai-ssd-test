@@ -23,7 +23,7 @@ describe("Feature 4: keypad and display", () => {
   test("A3: imports limited to engine, formatter and storage", async () => {
     const source = await readFile(new URL("../src/js/app.js", import.meta.url), "utf8");
     const imports = [...source.matchAll(/^import .* from "(.+)";/gm)].map((m) => m[1]).sort();
-    assert.deepEqual(imports, ["./engine/engine.js", "./format.js", "./storage.js"]);
+    assert.deepEqual(imports, ["./format.js", "./storage.js", "@calculator/engine"]);
     assert.doesNotMatch(source, /\bdocument\b|\bwindow\b/);
   });
 

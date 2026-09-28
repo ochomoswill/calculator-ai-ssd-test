@@ -62,7 +62,7 @@ async function listSourceFiles(dir = SRC, prefix = "./") {
   for (const name of await readdir(dir)) {
     const full = join(dir, name);
     if ((await stat(full)).isDirectory()) out.push(...(await listSourceFiles(full, `${prefix}${name}/`)));
-    else if (name !== "sw.js" && !name.endsWith(".md")) out.push(`${prefix}${name}`);
+    else if (name !== "sw.js" && !name.endsWith(".md") && name !== "package.json") out.push(`${prefix}${name}`);
   }
   return out.sort();
 }

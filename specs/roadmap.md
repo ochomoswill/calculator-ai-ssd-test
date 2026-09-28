@@ -90,6 +90,6 @@ Ordered queue of features. Each builds only on the ones above it. Design decisio
 
 ### 15. Engine package for mobile
 - **Delivers:** The mobile app can reuse the exact same arithmetic as the web app.
-- **Status:** planned
-- **Build:** Publish the engine as an internal package with no web dependencies, per [Requirement 1](tech-design-web.md#requirement-1-a-calculator-application-for-web-and-mobile).
+- **Status:** done
+- **Build:** Publish the engine as an internal package with no web dependencies, per [Requirement 1](tech-design-web.md#requirement-1-a-calculator-application-for-web-and-mobile). Spec: [2026-09-28-engine-package-for-mobile](2026-09-28-engine-package-for-mobile/requirements.md).
 - **Done when:** The web app consumes the engine only through the package and its tests run outside a browser.

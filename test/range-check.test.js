@@ -1,6 +1,6 @@
 import { test, describe } from "node:test";
 import assert from "node:assert/strict";
-import { initialState, inputDigit, inputDecimal, clearEntry, clearAll, inputOperator, evaluate, ERRORS } from "../src/js/engine/engine.js";
+import { initialState, inputDigit, inputDecimal, clearEntry, clearAll, inputOperator, evaluate, ERRORS } from "@calculator/engine";
 import { mountPage } from "./helpers/dom.js";
 
 const MAX = String(Number.MAX_VALUE);
