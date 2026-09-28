@@ -38,3 +38,6 @@ Added persistence: the display value, any calculation in progress and a ten-item
 
 2026-09-28 — installable-pwa
 Made the calculator installable: a web app manifest with name, start URL, standalone display, theme colours and generated 192 and 512 pixel icons, linked from the page, with a zero-dependency icon generator and tests that verify the manifest, icons and page links.
+
+2026-09-28 — offline-support
+Added offline support: a service worker precaches every static file, serves cache-first with a versioned cache that old versions are cleared from, falls back to the cached page for navigations, and is registered only where supported, with tests that run the worker under stubbed globals.

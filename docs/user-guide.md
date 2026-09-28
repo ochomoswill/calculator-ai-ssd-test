@@ -19,6 +19,7 @@ This is a simple calculator for adding, subtracting, multiplying and dividing nu
 11. [Responsive layout and theming](#responsive-layout-and-theming)
 12. [Persistence](#persistence)
 13. [Installable PWA](#installable-pwa)
+14. [Offline support](#offline-support)
 
 ---
 
@@ -309,7 +310,7 @@ No setup is needed. To let the calculator remember between visits, allow the sit
 
 ### Related features
 
-[Keypad and display](#keypad-and-display) and every operation section describe what gets remembered. [Number formatting](#number-formatting) formats the numbers in the history list for your locale. [Installable PWA](#installable-pwa) lets you keep the calculator as an app. Coming soon: Offline support (roadmap row 14).
+[Keypad and display](#keypad-and-display) and every operation section describe what gets remembered. [Number formatting](#number-formatting) formats the numbers in the history list for your locale. [Installable PWA](#installable-pwa) lets you keep the calculator as an app, and [Offline support](#offline-support) keeps your saved history reachable without a connection.
 
 ---
 
@@ -317,7 +318,7 @@ No setup is needed. To let the calculator remember between visits, allow the sit
 
 ### What this feature does
 
-You can now install the calculator on your phone, tablet or computer like an ordinary app. Once installed it has its own icon, opens in its own window without browser toolbars, and remembers your history as before. Nothing is downloaded from an app store; the installation comes straight from the web page. It does not yet work without an internet connection; that arrives with the next feature.
+You can now install the calculator on your phone, tablet or computer like an ordinary app. Once installed it has its own icon, opens in its own window without browser toolbars, and remembers your history as before. Nothing is downloaded from an app store; the installation comes straight from the web page. With [Offline support](#offline-support) it also works without an internet connection.
 
 ### Setup
 
@@ -333,5 +334,27 @@ Open the calculator over a secure (https) address in a browser that supports ins
 
 ### Related features
 
-[Responsive layout and theming](#responsive-layout-and-theming) gives the app its colours, which the icon and window frame share. [Persistence](#persistence) keeps your history inside the installed app. Coming soon: Offline support (roadmap row 14).
+[Responsive layout and theming](#responsive-layout-and-theming) gives the app its colours, which the icon and window frame share. [Persistence](#persistence) keeps your history inside the installed app, and [Offline support](#offline-support) makes it work without a connection.
+
+---
+
+## Offline support
+
+### What this feature does
+
+After you have opened the calculator once while online, it keeps working with no internet connection, whether you open it in the browser or from its installed icon. Everything the calculator needs is kept on your device, and when a new version is published it replaces the old one the next time you are online.
+
+### Setup
+
+Open the calculator once while connected, over a secure (https) address. Browsers only store the app for offline use from secure addresses.
+
+### How to use
+
+1. Open the calculator while online. It saves itself for later in the background.
+2. Go offline, or switch on aeroplane mode, and open the calculator again. It loads and calculates as normal, and your history is still there.
+3. When you are back online, simply use the calculator; any new version is picked up automatically and takes effect on the next visit.
+
+### Related features
+
+[Installable PWA](#installable-pwa) gives the calculator its own icon and window; this feature makes that app usable anywhere. [Persistence](#persistence) stores your history on the device, so it is available offline too.
 
