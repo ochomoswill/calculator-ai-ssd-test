@@ -1,4 +1,5 @@
-// Entry module. Feature 1 renders a static interface: no handlers are attached
-// and nothing is imported from the engine yet. Later features wire the keypad
-// and display to src/js/engine/.
-document.documentElement.dataset.loaded = "true";
+// Entry module: mounts the calculator wiring on the page's calculator root.
+// No locale is passed, so formatting follows the runtime's default locale.
+import { mount } from "./app.js";
+
+mount(document.querySelector(".calculator"));
