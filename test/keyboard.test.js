@@ -1,7 +1,7 @@
 import { test, describe } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { initialState, inputDigit, inputDecimal, inputOperator, evaluate, deleteLast, ERRORS } from "../src/js/engine/engine.js";
+import { initialState, inputDigit, inputDecimal, inputOperator, evaluate, deleteLast, ERRORS } from "@calculator/engine";
 import { mountPage } from "./helpers/dom.js";
 
 const type = (s, chars) => [...chars].reduce((st, c) => (c === "." ? inputDecimal(st) : inputDigit(st, c)), s);

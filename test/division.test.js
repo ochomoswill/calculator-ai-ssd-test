@@ -1,6 +1,6 @@
 import { test, describe } from "node:test";
 import assert from "node:assert/strict";
-import { initialState, inputDigit, inputDecimal, inputOperator, evaluate, clearEntry, clearAll, ERRORS } from "../src/js/engine/engine.js";
+import { initialState, inputDigit, inputDecimal, inputOperator, evaluate, clearEntry, clearAll, ERRORS } from "@calculator/engine";
 import { formatValue } from "../src/js/format.js";
 import { mountPage } from "./helpers/dom.js";
 

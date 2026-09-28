@@ -2,7 +2,7 @@
 // the engine's entry through the formatter into the result display.
 // See specs/tech-design-web.md, Requirement 1 (presentation layer) and
 // Requirement 2 (entry formatting). Touches the DOM only through the root it is given.
-import { initialState, inputDigit, inputDecimal, clearEntry, clearAll, inputOperator, evaluate, toggleSign, deleteLast, ERRORS } from "./engine/engine.js";
+import { initialState, inputDigit, inputDecimal, clearEntry, clearAll, inputOperator, evaluate, toggleSign, deleteLast, ERRORS } from "@calculator/engine";
 import { formatEntry, formatValue } from "./format.js";
 import { storageAvailable, load, save, MAX_HISTORY } from "./storage.js";
 

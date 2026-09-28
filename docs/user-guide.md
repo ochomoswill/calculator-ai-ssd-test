@@ -20,6 +20,7 @@ This is a simple calculator for adding, subtracting, multiplying and dividing nu
 12. [Persistence](#persistence)
 13. [Installable PWA](#installable-pwa)
 14. [Offline support](#offline-support)
+15. [Engine package for mobile](#engine-package-for-mobile)
 
 ---
 
@@ -357,4 +358,25 @@ Open the calculator once while connected, over a secure (https) address. Browser
 ### Related features
 
 [Installable PWA](#installable-pwa) gives the calculator its own icon and window; this feature makes that app usable anywhere. [Persistence](#persistence) stores your history on the device, so it is available offline too.
+
+---
+
+## Engine package for mobile
+
+### What this feature does
+
+The part of the calculator that does the arithmetic is now a separate, self-contained package that the web app uses and that a future mobile app can use unchanged. For you as a user nothing looks or behaves differently. It matters because the web calculator and the mobile calculator will always give the same answers, since they share the same arithmetic rather than two copies of it.
+
+### Setup
+
+No setup is needed. If you run the project from its source, the usual install command links the package automatically.
+
+### How to use
+
+1. Use the calculator exactly as before, in the browser or as an installed app.
+2. When the mobile app is released, expect identical results for the same calculation on both.
+
+### Related features
+
+[Calculation engine core](#calculation-engine-core) describes what the shared package does. Every operation section, [Range check and error state](#range-check-and-error-state) and [Division](#division) describe behaviour that the mobile app will inherit.
 

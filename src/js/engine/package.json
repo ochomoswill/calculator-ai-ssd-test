@@ -1,0 +1,9 @@
+{
+  "name": "@calculator/engine",
+  "version": "0.1.0",
+  "description": "Pure, browser-free calculation engine shared by the web and mobile calculators.",
+  "type": "module",
+  "exports": "./engine.js",
+  "files": ["engine.js", "README.md"],
+  "private": true
+}

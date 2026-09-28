@@ -8,7 +8,7 @@ import {
   inputDecimal,
   clearEntry,
   clearAll,
-} from "../src/js/engine/engine.js";
+} from "@calculator/engine";
 
 const type = (state, chars) =>
   [...chars].reduce((s, c) => (c === "." ? inputDecimal(s) : inputDigit(s, c)), state);

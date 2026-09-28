@@ -41,3 +41,6 @@ Made the calculator installable: a web app manifest with name, start URL, standa
 
 2026-09-28 — offline-support
 Added offline support: a service worker precaches every static file, serves cache-first with a versioned cache that old versions are cleared from, falls back to the cached page for navigations, and is registered only where supported, with tests that run the worker under stubbed globals.
+
+2026-09-28 — engine-package-for-mobile
+Packaged the calculation engine as the internal "@calculator/engine" package: the page resolves it through an import map with no build step, Node through an npm workspace link, the web app and all tests import it by name, and tests verify the manifest, workspace, import map and resolution.
