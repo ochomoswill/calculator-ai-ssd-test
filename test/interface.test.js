@@ -30,16 +30,19 @@ describe("Feature 1: calculator interface", () => {
   test("A5: exactly one Keypad region containing every key", () => {
     const regions = byRole(document, "region", "Keypad");
     assert.equal(regions.length, 1);
-    const all = byRole(document, "button");
     const inside = byRole(regions[0], "button");
-    assert.equal(inside.length, all.length);
+    assert.equal(inside.length, 19);
+    for (const b of byRole(document, "button")) {
+      if (!regions[0].contains(b)) assert.equal(b.hasAttribute("data-key"), false, "keys live only in the keypad");
+    }
   });
 
   test("A6: every key exists exactly once by accessible name", () => {
+    const [keypad] = byRole(document, "region", "Keypad");
     for (const name of keyNames) {
-      assert.equal(byRole(document, "button", name).length, 1, `key "${name}"`);
+      assert.equal(byRole(keypad, "button", name).length, 1, `key "${name}"`);
     }
-    assert.equal(byRole(document, "button").length, keyNames.length);
+    assert.equal(byRole(keypad, "button").length, keyNames.length);
   });
 
   test("A7: every key is a native button with type button", () => {
@@ -60,7 +63,8 @@ describe("Feature 1: calculator interface", () => {
   });
 
   test("A9: keys are focusable in document order with no positive tabindex", () => {
-    const buttons = byRole(document, "button");
+    const [keypad] = byRole(document, "region", "Keypad");
+    const buttons = byRole(keypad, "button");
     const order = [];
     for (const button of buttons) {
       const tabindex = button.getAttribute("tabindex");

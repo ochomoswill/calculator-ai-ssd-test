@@ -13,17 +13,17 @@ describe("Feature 4: keypad and display", () => {
     assert.equal(shown(display), "0");
   });
 
-  test("A2: one click listener and one keydown listener (feature 10)", async () => {
+  test("A2: click listeners for keypad and history, one keydown listener", async () => {
     const source = await readFile(new URL("../src/js/app.js", import.meta.url), "utf8");
     const listeners = source.match(/addEventListener\(\s*"([a-z]+)"/g) ?? [];
-    assert.deepEqual(listeners, ['addEventListener("click"', 'addEventListener("keydown"']);
+    assert.deepEqual(listeners, ['addEventListener("click"', 'addEventListener("click"', 'addEventListener("keydown"']);
     assert.doesNotMatch(source, /key(up|press)/);
   });
 
-  test("A3: imports limited to engine and formatter", async () => {
+  test("A3: imports limited to engine, formatter and storage", async () => {
     const source = await readFile(new URL("../src/js/app.js", import.meta.url), "utf8");
     const imports = [...source.matchAll(/^import .* from "(.+)";/gm)].map((m) => m[1]).sort();
-    assert.deepEqual(imports, ["./engine/engine.js", "./format.js"]);
+    assert.deepEqual(imports, ["./engine/engine.js", "./format.js", "./storage.js"]);
     assert.doesNotMatch(source, /\bdocument\b|\bwindow\b/);
   });
 

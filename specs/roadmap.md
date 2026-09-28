@@ -72,8 +72,8 @@ Ordered queue of features. Each builds only on the ones above it. Design decisio
 
 ### 12. Persistence
 - **Delivers:** The last value and recent history survive a reload.
-- **Status:** planned
-- **Build:** Web Storage behind the MDN feature-detection guard, per [Requirement 1](tech-design-web.md#requirement-1-a-calculator-application-for-web-and-mobile).
+- **Status:** done
+- **Build:** Web Storage behind the MDN feature-detection guard, per [Requirement 1](tech-design-web.md#requirement-1-a-calculator-application-for-web-and-mobile). Spec: [2026-09-28-persistence](2026-09-28-persistence/requirements.md).
 - **Done when:** Tests show state restored after reload and identical behaviour when storage is blocked or full.
 
 ### 13. Installable PWA

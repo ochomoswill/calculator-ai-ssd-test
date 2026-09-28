@@ -58,11 +58,13 @@ export function byRole(scope, role, name) {
  * Returns the document, the "Result" display element, and a click helper that
  * activates a key by its accessible name.
  */
-export async function mountPage(locale, state) {
+export async function mountPage(locale, state, storage = null) {
   const document = await loadPage();
   const { mount } = await import("../../src/js/app.js");
-  mount(document.querySelector("main"), { locale, state });
+  mount(document.querySelector("main"), { locale, state, storage });
   const [display] = byRole(document, "status", "Result");
+  const [historyRegion] = byRole(document, "region", "History");
+  const historyItems = () => Array.from(historyRegion.querySelectorAll("li")).map((li) => li.textContent);
   const click = (name) => {
     const [button] = byRole(document, "button", name);
     if (!button) throw new Error(`no key named ${name}`);
@@ -76,5 +78,5 @@ export async function mountPage(locale, state) {
     target.dispatchEvent(event);
     return event.defaultPrevented;
   };
-  return { document, display, click, type, key };
+  return { document, display, click, type, key, historyRegion, historyItems };
 }

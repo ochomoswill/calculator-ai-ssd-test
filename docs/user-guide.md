@@ -17,6 +17,7 @@ This is a simple calculator for adding, subtracting, multiplying and dividing nu
 9. [Division](#division)
 10. [Physical keyboard input](#physical-keyboard-input)
 11. [Responsive layout and theming](#responsive-layout-and-theming)
+12. [Persistence](#persistence)
 
 ---
 
@@ -41,7 +42,7 @@ No setup is needed. Open the calculator's web address in any modern browser. If 
 
 ### Related features
 
-[Keypad and display](#keypad-and-display) makes these keys work for entering numbers. [Physical keyboard input](#physical-keyboard-input) lets you type instead of pressing keys. Later sections will cover saving your last result and installing the calculator as an app.
+[Keypad and display](#keypad-and-display) makes these keys work for entering numbers. [Physical keyboard input](#physical-keyboard-input) lets you type instead of pressing keys. [Persistence](#persistence) saves your last result and recent calculations. A later section will cover installing the calculator as an app.
 
 ---
 
@@ -261,7 +262,7 @@ No setup is needed. Click anywhere on the calculator page once so it has the key
 
 ### Related features
 
-[Keypad and display](#keypad-and-display) covers reaching the on-screen keys with Tab, Enter and Space. Every operation section above applies equally to typed input. [Responsive layout and theming](#responsive-layout-and-theming) shows where your keyboard focus is. Coming soon: Persistence (roadmap row 12).
+[Keypad and display](#keypad-and-display) covers reaching the on-screen keys with Tab, Enter and Space. Every operation section above applies equally to typed input. [Responsive layout and theming](#responsive-layout-and-theming) shows where your keyboard focus is. [Persistence](#persistence) keeps a list of the calculations you complete.
 
 ---
 
@@ -284,5 +285,28 @@ No setup is needed. The calculator reads your device's appearance and motion set
 
 ### Related features
 
-[Calculator interface](#calculator-interface) laid out the keys this feature styles. [Range check and error state](#range-check-and-error-state) and [Division](#division) produce the messages shown in the warning colour. Coming soon: Persistence (roadmap row 12) and Installable PWA (row 13).
+[Calculator interface](#calculator-interface) laid out the keys this feature styles. [Range check and error state](#range-check-and-error-state) and [Division](#division) produce the messages shown in the warning colour. [Persistence](#persistence) adds the history list below the keypad. Coming soon: Installable PWA (roadmap row 13).
+
+---
+
+## Persistence
+
+### What this feature does
+
+The calculator now remembers where you left off. Reload the page or come back later and the display shows the value it showed before, including a calculation you were in the middle of. Below the keypad, a History list shows your ten most recent completed calculations, newest first, such as "12 + 30 = 42". Everything is stored in your own browser; nothing is sent anywhere. If your browser blocks storage, for example in a private window, the calculator works exactly the same but forgets when you leave.
+
+### Setup
+
+No setup is needed. To let the calculator remember between visits, allow the site to store data in your browser, which is the usual default.
+
+### How to use
+
+1. Use the calculator as normal. Each time you press Equals, the calculation is added to the top of the History list.
+2. Reload the page. The display and the History list come back as they were.
+3. Press Clear history, below the list, to empty it. Clear all resets the display but keeps the history.
+4. To stop the calculator remembering, clear the site's data in your browser settings.
+
+### Related features
+
+[Keypad and display](#keypad-and-display) and every operation section describe what gets remembered. [Number formatting](#number-formatting) formats the numbers in the history list for your locale. Coming soon: Installable PWA (roadmap row 13) and Offline support (row 14).
 
