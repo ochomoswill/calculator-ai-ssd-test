@@ -19,20 +19,20 @@ Ordered queue of features. Each builds only on the ones above it. Design decisio
 ### 3. Number formatting
 - **Delivers:** Numbers shown with the user's locale separators and no floating-point noise.
 - **Status:** planned
-- **Build:** Internationalisation number-formatting with a significant-digit cap and locale minus sign, per [Requirement 2](tech-design-web.md#requirement-2-addition) and [Requirement 3](tech-design-web.md#requirement-3-subtraction).
+- **Build:** Internationalisation number-formatting with a significant-digit cap and locale minus sign, applied in a presentation-side module so the engine's display value stays the raw entry text, per [Requirement 2](tech-design-web.md#requirement-2-addition) and [Requirement 3](tech-design-web.md#requirement-3-subtraction).
 - **Done when:** Unit tests confirm locale grouping, decimal mark, negative sign and the rounding of 0.1 + 0.2 to 0.3.
 
 ### 4. Keypad and display
 - **Delivers:** The user can tap on-screen keys and see the number they are entering.
 - **Status:** planned
 - **Build:** Native buttons with accessible names and the HTML output element as the display, per [Requirement 1](tech-design-web.md#requirement-1-a-calculator-application-for-web-and-mobile).
-- **Done when:** Component tests drive digit, decimal and clear keys through the accessibility tree and the display updates.
+- **Done when:** DOM tests drive digit, decimal and clear keys through the accessibility tree and the display updates.
 
 ### 5. Addition
 - **Delivers:** The user can add two numbers and chain further additions.
 - **Status:** planned
 - **Build:** Pure engine function wired to a plus key, per [Requirement 2](tech-design-web.md#requirement-2-addition).
-- **Done when:** Engine and component tests pass for single and chained additions, including decimals.
+- **Done when:** Engine and DOM tests pass for single and chained additions, including decimals.
 
 ### 6. Range check and error state
 - **Delivers:** Results too large to represent show a clear error instead of nonsense, and clear recovers.
@@ -62,7 +62,7 @@ Ordered queue of features. Each builds only on the ones above it. Design decisio
 - **Delivers:** The user can operate the whole calculator from a keyboard, including the numeric keypad.
 - **Status:** planned
 - **Build:** Keydown handling on the standard key property mapped to engine actions, per [Requirement 1](tech-design-web.md#requirement-1-a-calculator-application-for-web-and-mobile).
-- **Done when:** Component tests confirm digits, four operators, Enter, Escape, Backspace and Delete all act as designed.
+- **Done when:** DOM tests confirm digits, four operators, Enter, Escape, Backspace and Delete all act as designed.
 
 ### 11. Responsive layout and theming
 - **Delivers:** The calculator fits any screen or container, respects zoom, and follows the OS light/dark and reduced-motion settings.
